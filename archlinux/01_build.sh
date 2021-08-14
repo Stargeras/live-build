@@ -6,6 +6,9 @@ workspacedir="/srv/workspace/archbuild"
 flavor=$1
 scriptname="${flavor}.sh"
 
+# Install archiso
+sudo pacman -S archiso --noconfirm
+
 # COPY BUILD-FILES
 #sudo chown -R jenkins:users ${filesdir}
 if [[ ! -d ${workspacedir}/build-files ]]; then
