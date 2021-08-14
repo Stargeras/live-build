@@ -19,6 +19,7 @@ sudo cp ${filesdir}/* ${workspacedir}/build-files/
 sudo cp ${basedir}/common/* ${workspacedir}/build-files/
 
 # RUN STAGES
+cd ${workspacedir}
 sudo lb config --archive-areas "main contrib non-free" -d ${release} --bootappend-live "live-config.nocomponents boot=live quiet splash"
 sudo lb bootstrap
 sudo lb chroot
@@ -35,7 +36,6 @@ sudo lb binary
 # RENAME FINAL
 now=$(date +"%m%d%Y")
 sudo mv ${workspacedir}/live-image-amd64.hybrid.iso debian-${release}-${flavor}-$now.iso
-sudo mv ${workspacedir}/out/* ${workspacedir}/archlinux-${flavor}-$now.iso
 
 # SERVE OVER HTTP
 #sudo pacman -S apache --noconfirm
