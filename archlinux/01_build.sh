@@ -22,7 +22,8 @@ sudo sed -i "s:archisolabel=%ARCHISO_LABEL%:archisolabel=%ARCHISO_LABEL% cow_spa
 sudo cp ${workspacedir}/build-files/* ${workspacedir}/airootfs/root/
 
 # INITIAL CREATE AND DELETE TO ALLOW REBUILD
-sudo mkarchiso -v ${workspacedir}/
+cd ${workspacedir}
+sudo mkarchiso -v .
 sudo rm -f ${workspacedir}/work/base._prepare_airootfs_image ${workspacedir}/work/base._mkairootfs_squashfs ${workspacedir}/work/build._build_buildmode_iso ${workspacedir}/work/iso._build_iso_image
 sudo rm -f ${workspacedir}/out/*
 
@@ -31,7 +32,8 @@ sudo arch-chroot ${workspacedir}/work/x86_64/airootfs chmod 777 /root/${scriptna
 sudo arch-chroot ${workspacedir}/work/x86_64/airootfs /bin/bash -c "/root/${scriptname}"
 
 # REBUILD
-sudo mkarchiso -v ${workspacedir}/
+cd ${workspacedir}
+sudo mkarchiso -v .
 
 # RENAME FINAL
 now=$(date +"%m%d%Y")
