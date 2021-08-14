@@ -40,7 +40,7 @@ now=$(date +"%m%d%Y")
 sudo mv ${workspacedir}/out/* ${workspacedir}/archlinux-${flavor}-$now.iso
 
 # SERVE OVER HTTP
-sudo pacman -S apache
+sudo pacman -S apache --noconfirm
 mkdir -p /srv/http/releases
 sudo systemctl restart httpd
 sudo mv ${workspacedir}/*.iso /srv/http/releases/
