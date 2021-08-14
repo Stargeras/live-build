@@ -152,22 +152,6 @@ Language=
 XSession=gnome-xorg
 EOF
 
-cat > /home/admin/Documents/network.sh << FOE
-nmcli connection add con-name con1 ipv4.addresses 10.37.19.77/24 ipv4.gateway 10.37.19.1 ipv4.dns 10.37.19.11,10.181.0.12 type ethernet ipv4.method manual connection.interface-name ""
-nmcli con up con1
-cat >> /etc/hosts << DUN
-10.37.19.10 rhv-engine.of.bsil
-10.37.19.109 rhel109.of.bsil rhel109
-10.37.19.110 rhel110.of.bsil rhel110
-10.37.19.103 rhel103.of.bsil rhel103
-10.37.19.50 rhv-engine.ofint.bsil
-10.37.19.114 rhel114.ofint.bsil rhel114
-10.37.19.115 rhel115.ofint.bsil rhel115
-10.37.19.116 rhel116.ofint.bsil rhel116
-10.37.19.108 rhel108.ofint.bsil rhel108
-DUN
-FOE
-
 cp /root/* /home/admin/Documents/
 chmod +x /home/admin/Documents/*.sh
 chown -R admin:users /home/admin/
