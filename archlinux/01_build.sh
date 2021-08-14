@@ -1,6 +1,6 @@
 #!/bin/bash
 
-basedir="NEED TO DO"
+basedir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 filesdir="${basedir}/${flavor}"
 workspacedir="/srv/workspace/archbuild"
 flavor=$1
@@ -8,7 +8,9 @@ scriptname="${flavor}.sh"
 
 # COPY BUILD-FILES
 #sudo chown -R jenkins:users ${filesdir}
-sudo mkdir -p ${workspacedir}/build-files
+if [[ ! -d ${workspacedir}/build-files ]]; then
+        sudo mkdir -p ${workspacedir}/build-files
+fi
 sudo cp ${filesdir}/* ${workspacedir}/build-files/
 
 # ARCHISO CONFIG
