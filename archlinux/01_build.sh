@@ -35,7 +35,7 @@ sudo mkarchiso -v ${workspacedir}/
 
 # RENAME FINAL
 now=$(date +"%m%d%Y")
-sudo mv ${workspacedir}out/* ${workspacedir}/archlinux-${flavor}-$now.iso
+sudo mv ${workspacedir}/out/* ${workspacedir}/archlinux-${flavor}-$now.iso
 
 # SERVE OVER HTTP
 # UPCOMING
