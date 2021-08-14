@@ -3,7 +3,7 @@
 basedir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 flavor=$1
 workspacedir="/srv/workspace/archbuild"
-filesdir="${basedir}${flavor}"
+filesdir="${basedir}/${flavor}"
 scriptname="${flavor}.sh"
 
 # Install archiso
