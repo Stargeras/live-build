@@ -46,18 +46,16 @@ EOF
 rm -f /etc/systemd/system/getty@tty1.service.d/autologin.conf
 systemctl set-default graphical.target
 
-pacman -S pantheon firefox chromium neofetch htop gparted print-manager \
-        kate celluloid \
-        virt-viewer cups freerdp lightdm --noconfirm #code npm nodejs
+pacman -S pantheon firefox chromium neofetch htop gparted print-manager celluloid \
+        virt-viewer cups freerdp --noconfirm #code npm nodejs
 systemctl enable NetworkManager
 systemctl enable sshd
-systemctl enable sddm
 systemctl enable cups-browsed
 su admin -c 'cat >> ~/.bashrc << EOF
 export PS1="\[\e[31m\]\u\[\e[m\]@\h\[\e[34m\]\w\[\e[m\]\\$ "
 EOF'
 #sddm
-cp -r /usr/lib/sddm/sddm.conf.d /etc/
+#cp -r /usr/lib/sddm/sddm.conf.d /etc/
 #sed -i "s/Current=/Current=breeze/g" /etc/sddm.conf.d/default.conf
 #sed -i "s/CursorTheme=/CursorTheme=breeze_cursors/g" /etc/sddm.conf.d/default.conf
 #Firefox
