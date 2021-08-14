@@ -1,9 +1,9 @@
 #!/bin/bash
 
 basedir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
-filesdir="${basedir}${flavor}"
-workspacedir="/srv/workspace/archbuild"
 flavor=$1
+workspacedir="/srv/workspace/archbuild"
+filesdir="${basedir}${flavor}"
 scriptname="${flavor}.sh"
 
 # Install archiso
