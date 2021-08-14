@@ -1,7 +1,7 @@
 #!/bin/bash
 
 basedir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
-filesdir="${basedir}/${flavor}"
+filesdir="${basedir}${flavor}"
 workspacedir="/srv/workspace/archbuild"
 flavor=$1
 scriptname="${flavor}.sh"
