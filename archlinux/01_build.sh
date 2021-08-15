@@ -15,6 +15,7 @@ if [[ ! -d ${workspacedir}/build-files ]]; then
         sudo mkdir -p ${workspacedir}/build-files
 fi
 sudo cp ${filesdir}/* ${workspacedir}/build-files/
+sudo cp ${basedir}/common/* ${workspacedir}/build-files/
 
 # ARCHISO CONFIG
 sudo cp -r /usr/share/archiso/configs/releng/* ${workspacedir}/
@@ -28,7 +29,9 @@ sudo rm -f ${workspacedir}/work/base._prepare_airootfs_image ${workspacedir}/wor
 sudo rm -f ${workspacedir}/out/*
 
 # RUN SCRIPT
+sudo arch-chroot ${workspacedir}/work/x86_64/airootfs chmod 777 /root/base.sh
 sudo arch-chroot ${workspacedir}/work/x86_64/airootfs chmod 777 /root/${scriptname}
+sudo arch-chroot ${workspacedir}/work/x86_64/airootfs /bin/bash -c "/root/base.sh"
 sudo arch-chroot ${workspacedir}/work/x86_64/airootfs /bin/bash -c "/root/${scriptname}"
 
 # REBUILD
