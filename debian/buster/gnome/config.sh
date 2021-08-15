@@ -34,13 +34,6 @@ gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-type 'no
 gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
 #gedit
 gsettings set org.gnome.gedit.preferences.editor display-line-numbers true
-#VPN
-if [ ! -f "/home/admin/Documents/vpn_created" ]; then
-    nmcli connection import type openvpn file /home/admin/Documents/expressvpn-newyork.ovpn;
-    nmcli connection modify expressvpn-newyork vpn.user-name en48zqlgxnrbde1cqdrehvcd;
-    nmcli connection modify expressvpn-newyork vpn.secrets password=pahs4pueovqcuqt4k67zzx3n;
-    touch /home/admin/Documents/vpn_created;
-fi
 #VNC
 dconf write /org/gnome/settings-daemon/plugins/sharing/vino-server/enabled-connections ["'"$(nmcli -t -f UUID connection show --active)"'"]
 gsettings set org.gnome.Vino authentication-methods ['vnc']
