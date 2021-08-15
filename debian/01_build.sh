@@ -8,7 +8,7 @@ filesdir="${basedir}/${release}/${flavor}"
 scriptname="${flavor}.sh"
 
 # Install archiso
-sudo apt install -y debootstrap arch-build-scripts
+sudo apt install -y debootstrap arch-install-scripts live-build
 
 # COPY BUILD-FILES
 #sudo chown -R jenkins:users ${filesdir}
@@ -39,7 +39,7 @@ sudo mv ${workspacedir}/live-image-amd64.hybrid.iso debian-${release}-${flavor}-
 
 # SERVE OVER HTTP
 sudo apt install -y apache2
-mkdir -p /var/www/html/releases
+sudo mkdir -p /var/www/html/releases
 sudo systemctl start apache2
 sudo mv ${workspacedir}/*.iso /var/www/html/releases/
 ip a
