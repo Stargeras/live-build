@@ -1,0 +1,72 @@
+[/]
+migration-level=1
+panels=['0a3200a0-e4ac-11ea-a77d-08002721844c']
+
+[applets/{0a332610-e4ac-11ea-a77d-08002721844c}]
+alignment='start'
+name='Budgie Menu'
+position=0
+
+[applets/{0a39ee14-e4ac-11ea-a77d-08002721844c}]
+alignment='start'
+name='Spacer'
+position=1
+
+[applets/{0a3b34b8-e4ac-11ea-a77d-08002721844c}]
+alignment='start'
+name='Icon Task List'
+position=2
+
+[applets/{0a45abfa-e4ac-11ea-a77d-08002721844c}]
+alignment='end'
+name='Spacer'
+position=0
+
+[applets/{0a45da6c-e4ac-11ea-a77d-08002721844c}]
+alignment='end'
+name='System Tray'
+position=1
+
+[applets/{0a46849e-e4ac-11ea-a77d-08002721844c}]
+alignment='end'
+name='Notifications'
+position=2
+
+[applets/{0a537078-e4ac-11ea-a77d-08002721844c}]
+alignment='end'
+name='Status Indicator'
+position=3
+
+[applets/{0a5cba0c-e4ac-11ea-a77d-08002721844c}]
+alignment='end'
+name='User Indicator'
+position=4
+
+[applets/{0a5f492a-e4ac-11ea-a77d-08002721844c}]
+alignment='end'
+name='Spacer'
+position=5
+
+[applets/{0a5f7cd8-e4ac-11ea-a77d-08002721844c}]
+alignment='end'
+name='Separator'
+position=6
+
+[applets/{0a60fa22-e4ac-11ea-a77d-08002721844c}]
+alignment='end'
+name='Clock'
+position=7
+
+[applets/{0a62c334-e4ac-11ea-a77d-08002721844c}]
+alignment='end'
+name='Raven Trigger'
+position=8
+
+[instance/icon-tasklist/{0a3b34b8-e4ac-11ea-a77d-08002721844c}]
+pinned-launchers=['firefox.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Terminal.desktop']
+
+[panels/{0a3200a0-e4ac-11ea-a77d-08002721844c}]
+applets=['0a60fa22-e4ac-11ea-a77d-08002721844c', '0a5f492a-e4ac-11ea-a77d-08002721844c', '0a39ee14-e4ac-11ea-a77d-08002721844c', '0a45da6c-e4ac-11ea-a77d-08002721844c', '0a46849e-e4ac-11ea-a77d-08002721844c', '0a5cba0c-e4ac-11ea-a77d-08002721844c', '0a537078-e4ac-11ea-a77d-08002721844c', '0a3b34b8-e4ac-11ea-a77d-08002721844c', '0a62c334-e4ac-11ea-a77d-08002721844c', '0a332610-e4ac-11ea-a77d-08002721844c', '0a5f7cd8-e4ac-11ea-a77d-08002721844c', '0a45abfa-e4ac-11ea-a77d-08002721844c']
+location='bottom'
+size=53
+transparency='none'
