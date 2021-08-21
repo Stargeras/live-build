@@ -30,11 +30,6 @@ su admin -c 'cd ~/Documents/build/gtk-theme-framework/ && sudo ./main.sh -io -t 
 su admin -c 'cd ~/Documents/build/gtk-theme-framework/ && sudo ./main.sh -io -t palenight -d /usr/share/themes/ -p /usr/share/icons/'
 su admin -c 'cd ~/Documents/build/gtk-theme-framework/ && sudo ./main.sh -io -t gruvterial -d /usr/share/themes/ -p /usr/share/icons/'
 
-su admin -c 'cd ~/Documents/build/ && git clone https://aur.archlinux.org/gnome-shell-extension-dash-to-panel.git'
-su admin -c 'cd ~/Documents/build/gnome-shell-extension-dash-to-panel/ && makepkg -si --noconfirm'
-su admin -c 'sudo rm -rf ~/Documents/build/'
-
-
 # su admin -c 'cat >> ~/.bashrc << EOF
 # export PS1="\[\e[31m\]\u\[\e[m\]@\h\[\e[34m\]\w\[\e[m\]\\$ "
 # EOF'
