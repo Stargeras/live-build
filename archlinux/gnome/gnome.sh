@@ -62,6 +62,8 @@ dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/cus
 dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/binding "'<Super>e'"
 dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/command "'nautilus --new-window'"
 dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/name "'Nautilus'"
+# Terminal font
+dconf write /org/gnome/desktop/interface/monospace-font-name "'Liberation Mono 11'"
 #clock format
 sudo ln -sf /usr/share/zoneinfo/America/New_York /etc/localtime
 gsettings set org.gnome.desktop.interface clock-format 12h
