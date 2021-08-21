@@ -1,5 +1,5 @@
 #!/bin/bash
-packages="gnome firefox chromium neofetch htop gparted \
+packages="gnome firefox chromium neofetch htop gparted gnome-tweaks code ttf-droid \
         virt-viewer cups networkmanager networkmanager-openvpn transmission-gtk rhythmbox \
         celluloid gedit htop freerdp"
 #packages="gnome-session gnome-tweaks gnome-terminal gnome-backgrounds gnome-calculator gnome-control-center nautilus bluez gdm pulseaudio firefox chromium neofetch htop gparted virt-viewer cups networkmanager-openvpn networkmanager transmission-gtk rhythmbox celluloid gedit htop eog freerdp"
