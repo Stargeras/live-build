@@ -8,7 +8,7 @@ apt update
 apt install -y gnome firefox-esr neofetch ssh vim curl bash-completion\
  gparted celluloid gnome-shell-extension-dash-to-panel flatpak cups git\
  debootstrap systemd-container arch-install-scripts network-manager-openvpn-gnome\
- virt-viewer google-chrome-stable f5vpn code gnome-games-
+ virt-viewer gnome-games-
  #slack-desktop doesn't work
 
 systemctl disable unattended-upgrades
