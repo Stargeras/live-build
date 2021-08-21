@@ -1,9 +1,10 @@
 #!/bin/bash
+packages="plasma firefox chromium neofetch htop gparted print-manager \
+        konsole dolphin gwenview ark kate qbittorrent celluloid \
+        virt-viewer cups freerdp"
 aurpackages="f5vpn"
 
-pacman -S plasma firefox chromium neofetch htop gparted print-manager \
-        konsole dolphin gwenview ark kate qbittorrent celluloid \
-        virt-viewer cups freerdp --noconfirm #code npm nodejs
+pacman -S ${packages} --noconfirm #code npm nodejs
 systemctl enable NetworkManager
 systemctl enable sshd
 systemctl enable sddm
