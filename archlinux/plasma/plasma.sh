@@ -58,7 +58,7 @@ sqlite3 ~/.local/share/kactivitymanagerd/resources/database 'INSERT INTO Resourc
 #kwriteconfig5 --file gtk-3.0/settings.ini --group Settings --key gtk-theme-name "Breeze Dark"
 #kwriteconfig5 --file gtk-3.0/settings.ini --group Settings --key gtk-icon-theme-name breeze-dark
 #kwriteconfig5 --file gtk-3.0/settings.ini --group Settings --key gtk-application-prefer-dark-theme true
-#lookandfeeltool -a org.kde.breezedark.desktop
+lookandfeeltool -a org.kde.breezedark.desktop
 #kquitapp5 plasmashell
 #kstart5 plasmashell
 EOF
