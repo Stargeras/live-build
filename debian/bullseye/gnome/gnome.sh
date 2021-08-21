@@ -1,8 +1,14 @@
 #!/bin/bash
 
-cat >> /etc/apt/sources.list << EOF
-deb [trusted=yes] http://23.82.1.13/deb/ buster main
-EOF
+#cat >> /etc/apt/sources.list << EOF
+#private
+#deb [trusted=yes] http://23.82.1.13/deb/ buster main
+#vscode
+#deb [arch=amd64,arm64,armhf] http://packages.microsoft.com/repos/code stable main
+#google-chrome
+#deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main
+#EOF
+
 
 apt update
 apt install -y gnome firefox-esr neofetch ssh vim curl bash-completion\
@@ -65,6 +71,11 @@ Type=Application
 X-GNOME-Autostart-enabled=true
 EOF'
 su admin -c 'chmod +x ~/.config/autostart/script.desktop'
+
+# F5VPN
+wget https://f5vpn.geneseo.edu/public/download/linux_f5vpn.x86_64.deb
+dpkg -i linux_f5vpn.x86_64.deb
+rm -f linux_f5vpn.x86_64.deb
 
 ##Firefox title bar and flex space
 cat >> /etc/firefox-esr/firefox-esr.js << EOF
