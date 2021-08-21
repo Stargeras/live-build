@@ -1,4 +1,5 @@
 #!/bin/bash
+
 pacman-key --init && pacman-key --populate
 sed -i '/evowise/d' /etc/pacman.d/mirrorlist
 sed -i '/CheckSpace/d' /etc/pacman.conf
