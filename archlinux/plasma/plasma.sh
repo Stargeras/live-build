@@ -20,10 +20,11 @@ sed -i "s/CursorTheme=/CursorTheme=breeze_cursors/g" /etc/sddm.conf.d/default.co
 
 # AUR Pakages
 for package in ${aurpackages}; do
-  su admin -c "mkdir -p ~/Documents/build/"
-  su admin -c "cd ~/Documents/build/ && git clone https://aur.archlinux.org/${package}.git"
-  su admin -c "cd ~/Documents/build/${package}/ && makepkg -si --noconfirm"
-  su admin -c "sudo rm -rf ~/Documents/build/"
+  aurdir="~/Documents/build"
+  su admin -c "mkdir -p ${aurdir}"
+  su admin -c "cd ${aurdir} && git clone https://aur.archlinux.org/${package}.git"
+  su admin -c "cd ${aurdir}/${package}/ && makepkg -si --noconfirm"
+  su admin -c "sudo rm -rf ${aurdir}"
 done
 
 #Firefox
