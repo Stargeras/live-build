@@ -1,4 +1,6 @@
 #!/bin/bash
+aurpackages="f5vpn"
+
 pacman -S plasma firefox chromium neofetch htop gparted print-manager \
         konsole dolphin gwenview ark kate qbittorrent celluloid \
         virt-viewer cups freerdp --noconfirm #code npm nodejs
@@ -14,6 +16,14 @@ su admin -c 'echo "exec startplasma-x11" >> ~/.xinitrc'
 cp -r /usr/lib/sddm/sddm.conf.d /etc/
 sed -i "s/Current=/Current=breeze/g" /etc/sddm.conf.d/default.conf
 sed -i "s/CursorTheme=/CursorTheme=breeze_cursors/g" /etc/sddm.conf.d/default.conf
+
+# AUR Pakages
+for package in ${aurpackages}; do
+  su admin -c 'mkdir -p ~/Documents/build/'
+  su admin -c 'cd ~/Documents/build/ && git clone https://aur.archlinux.org/${package}.git'
+  su admin -c 'cd ~/Documents/build/${package}/ && makepkg -si --noconfirm'
+  su admin -c 'sudo rm -rf ~/Documents/build/'
+done
 
 #Firefox
 cat >> /usr/lib/firefox/browser/defaults/preferences/vendor.js << EOF
