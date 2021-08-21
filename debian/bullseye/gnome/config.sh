@@ -6,8 +6,10 @@ gsettings set org.gnome.desktop.interface enable-animations false
 #gsettings set org.gnome.desktop.interface cursor-theme 'Yaru'
 #DARK THEME
 #gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
+# GEDIT
 gsettings set org.gnome.gedit.preferences.editor scheme 'oblivion'
 gsettings set org.gnome.Terminal.Legacy.Settings theme-variant dark
+gsettings set org.gnome.gedit.preferences.editor display-line-numbers true
 #Nautilus size
 gsettings set org.gnome.nautilus.window-state initial-size '(1050, 560)'
 #Terminal size
