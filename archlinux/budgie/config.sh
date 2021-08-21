@@ -11,6 +11,9 @@ gsettings set org.gnome.nautilus.window-state initial-size '(1050, 560)'
 #Terminal size
 gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/ default-size-rows 27
 gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/ default-size-columns 122
+gsettings set org.gnome.Terminal.Legacy.Settings theme-variant dark
+# Terminal font
+dconf write /org/gnome/desktop/interface/monospace-font-name "'Liberation Mono 11'"
 #PANEL=\$(dconf list /com/solus-project/budgie-panel/panels/ |cut -c 2-37)
 #LAUNCHERS=\$(dconf list /com/solus-project/budgie-panel/instance/icon-tasklist/ |cut -c 2-37)
 #dconf write /com/solus-project/budgie-panel/panels/{\$PANEL}/location "'bottom'"
