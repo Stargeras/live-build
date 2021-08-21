@@ -1,8 +1,8 @@
 #!/bin/bash
 packages="plasma firefox chromium neofetch htop gparted print-manager \
         konsole dolphin gwenview ark kate qbittorrent celluloid \
-        virt-viewer cups freerdp"
-aurpackages="f5vpn"
+        virt-viewer cups freerdp code ttf-droid"
+aurpackages="f5vpn cackey"
 
 pacman -S ${packages} --noconfirm #code npm nodejs
 systemctl enable NetworkManager
