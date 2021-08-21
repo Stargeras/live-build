@@ -1,12 +1,24 @@
 #!/bin/bash
-pacman -S gnome-session gnome-tweaks gnome-terminal gnome-backgrounds gnome-calculator \
-        gnome-control-center nautilus bluez gdm pulseaudio firefox chromium neofetch htop gparted \
-        virt-viewer cups networkmanager-openvpn networkmanager transmission-gtk rhythmbox \
-        celluloid gedit htop eog freerdp --noconfirm #code npm nodejs deepin-community-wallpapers
+packages="gnome firefox chromium neofetch htop gparted \
+        virt-viewer cups networkmanager-openvpn transmission-gtk rhythmbox \
+        celluloid gedit htop freerdp"
+#packages="gnome-session gnome-tweaks gnome-terminal gnome-backgrounds gnome-calculator gnome-control-center nautilus bluez gdm pulseaudio firefox chromium neofetch htop gparted virt-viewer cups networkmanager-openvpn networkmanager transmission-gtk rhythmbox celluloid gedit htop eog freerdp"
+aurpackages="f5vpn cackey gnome-shell-extension-dash-to-panel"
+pacman -S ${packages} --noconfirm #code npm nodejs deepin-community-wallpapers
 systemctl enable NetworkManager
 systemctl enable gdm
 systemctl enable sshd
 systemctl enable cups-browsed
+
+# AUR Pakages
+for package in ${aurpackages}; do
+  aurdir="~/Documents/build"
+  su admin -c "mkdir -p ${aurdir}"
+  su admin -c "cd ${aurdir} && git clone https://aur.archlinux.org/${package}.git"
+  su admin -c "cd ${aurdir}/${package}/ && makepkg -si --noconfirm"
+  su admin -c "sudo rm -rf ${aurdir}"
+done
+
 # #yaru
 pacman -S ninja meson sassc --noconfirm
 su admin -c 'mkdir ~/Documents/build'
@@ -47,7 +59,7 @@ gsettings set org.gnome.nautilus.window-state initial-size '(1050, 560)'
 gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/ default-size-rows 27
 gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/ default-size-columns 122
 #Dash to panel
-gsettings set org.gnome.shell favorite-apps "['firefox.desktop', 'chromium.desktop', 'nautilus.desktop', 'gnome-terminal.desktop']"
+gsettings set org.gnome.shell favorite-apps "['firefox.desktop', 'nautilus.desktop', 'gnome-terminal.desktop']"
 #gsettings set org.gnome.shell enabled-extensions "['dash-to-panel@jderose9.github.com']"
 #gsettings --schemadir /usr/share/gnome-shell/extensions/dash-to-panel@jderose9.github.com/schemas/ list-recursively org.gnome.shell.extensions.dash-to-panel
 #gsettings --schemadir /usr/share/gnome-shell/extensions/dash-to-panel@jderose9.github.com/schemas/ set org.gnome.shell.extensions.dash-to-panel panel-size 40
@@ -63,7 +75,7 @@ dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/cus
 dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/command "'nautilus --new-window'"
 dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/name "'Nautilus'"
 # Terminal font
-dconf write /org/gnome/desktop/interface/monospace-font-name "'Liberation Mono 11'"
+#dconf write /org/gnome/desktop/interface/monospace-font-name "'Liberation Mono 11'"
 #clock format
 sudo ln -sf /usr/share/zoneinfo/America/New_York /etc/localtime
 gsettings set org.gnome.desktop.interface clock-format 12h
