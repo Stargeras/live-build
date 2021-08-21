@@ -1,18 +1,23 @@
 #!/bin/bash
 
-cat >> /etc/apt/sources.list << EOF
-deb [trusted=yes] http://23.82.1.13/deb/ buster main
-EOF
+#cat >> /etc/apt/sources.list << EOF
+#private
+#deb [trusted=yes] http://23.82.1.13/deb/ buster main
+#vscode
+#deb [arch=amd64,arm64,armhf] http://packages.microsoft.com/repos/code stable main
+#google-chrome
+#deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main
+#EOF
 
 apt update
 apt install -y gnome firefox-esr neofetch ssh vim curl bash-completion\
  gparted vlc gnome-shell-extension-dash-to-panel flatpak cups git\
  materia-gtk-theme papirus-icon-theme debootstrap systemd-container\
  arch-install-scripts network-manager-openvpn-gnome virt-viewer freerdp2-x11\
- google-chrome-stable f5vpn cackey gnome-games-
+ gnome-games-
 
-apt update
-apt upgrade -y
+#apt update
+#apt upgrade -y
 systemctl disable unattended-upgrades
 ln -sf /usr/share/zoneinfo/America/New_York /etc/localtime
 cat >> /etc/bash.bashrc << EOF
@@ -53,6 +58,11 @@ echo 'admin:admin' |chpasswd
 echo 'root:root' | chpasswd
 #add home dirs
 su admin -c 'xdg-user-dirs-update'
+
+# F5VPN
+wget https://f5vpn.geneseo.edu/public/download/linux_f5vpn.x86_64.deb
+dpkg -i linux_f5vpn.x86_64.deb
+rm -f linux_f5vpn.x86_64.deb
 
 #Yaru
 : `
