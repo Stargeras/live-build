@@ -11,7 +11,7 @@
 
 
 apt update
-apt install -y plasma-desktop sddm konsole dolphin kate ssh firefox-esr\
+apt install -y plasma-desktop sddm konsole dolphin kate ssh firefox-esr cackey\
  gparted celluloid flatpak cups git neofetch vim curl gparted bash-completion\
  debootstrap systemd-container arch-install-scripts network-manager-openvpn-gnome\
  virt-viewer
@@ -72,15 +72,21 @@ X-GNOME-Autostart-enabled=true
 EOF'
 su admin -c 'chmod +x ~/.config/autostart/script.desktop'
 
+cat > /etc/xdg/dolphinrc << EOF
+[General]
+Version=200
+[MainWindow]
+Height 1080=670
+MenuBar=Disabled
+State=AAAA/wAAAAD9AAAAAwAAAAAAAAC4AAABzvwCAAAAAvsAAAAWAGYAbwBsAGQAZQByAHMARABvAGMAawAAAAAA/////wAAAAoBAAAD+wAAABQAcABsAGEAYwBlAHMARABvAGMAawEAAAAmAAABzgAAAF0BAAADAAAAAQAAAAAAAAAA/AIAAAAB+wAAABAAaQBuAGYAbwBEAG8AYwBrAAAAAAD/////AAAACgEAAAMAAAADAAAAAAAAAAD8AQAAAAH7AAAAGAB0AGUAcgBtAGkAbgBhAGwARABvAGMAawAAAAAA/////wAAAAoBAAADAAACNQAAAc4AAAAEAAAABAAAAAgAAAAI/AAAAAEAAAACAAAAAQAAABYAbQBhAGkAbgBUAG8AbwBsAEIAYQByAQAAAAD/////AAAAAAAAAAA=
+ToolBarsMovable=Disabled
+Width 1920=1187
+EOF
+
 # F5VPN
 wget https://f5vpn.geneseo.edu/public/download/linux_f5vpn.x86_64.deb
 dpkg -i linux_f5vpn.x86_64.deb
 rm -f linux_f5vpn.x86_64.deb
-
-# CACKEY
-wget http://cackey.rkeene.org/download/0.7.5/cackey_0.7.5-1_amd64.deb
-dpkg -i cackey_0.7.5-1_amd64.deb
-rm -f cackey_0.7.5-1_amd64.deb
 
 ##Firefox title bar and flex space
 cat >> /etc/firefox-esr/firefox-esr.js << EOF
