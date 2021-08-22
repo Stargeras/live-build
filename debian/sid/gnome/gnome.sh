@@ -77,6 +77,11 @@ wget https://f5vpn.geneseo.edu/public/download/linux_f5vpn.x86_64.deb
 dpkg -i linux_f5vpn.x86_64.deb
 rm -f linux_f5vpn.x86_64.deb
 
+# CACKEY
+wget http://cackey.rkeene.org/download/0.7.5/cackey_0.7.5-1_amd64.deb
+dpkg -i cackey_0.7.5-1_amd64.deb
+rm -f cackey_0.7.5-1_amd64.deb
+
 ##Firefox title bar and flex space
 cat >> /etc/firefox-esr/firefox-esr.js << EOF
 pref("browser.tabs.drawInTitlebar", true);
