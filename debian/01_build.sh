@@ -32,7 +32,8 @@ sudo cp ${workspacedir}/build-files/* ${workspacedir}/chroot/root/
 
 # RUN SCRIPT
 #sudo arch-chroot ${workspacedir}/work/x86_64/airootfs chmod 777 /root/${scriptname}
-sudo arch-chroot ${workspacedir}/chroot /bin/bash -c "su - -c /root/${scriptname}"
+#sudo arch-chroot ${workspacedir}/chroot /bin/bash -c "su - -c /root/${scriptname}"
+sudo arch-chroot ${workspacedir}/chroot /bin/bash /root/${scriptname}
 
 # RUN FINAL STAGE
 sudo lb binary
