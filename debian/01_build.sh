@@ -20,8 +20,8 @@ sudo cp ${basedir}/common/* ${workspacedir}/build-files/
 
 # RUN STAGES
 cd ${workspacedir}
-if [[ ${release} == "bullseye" ]]; then
-  sudo lb config --archive-areas "main contrib non-free" -d bullseye --security false --bootappend-live "live-config.nocomponents boot=live quiet splash"
+if [[ ${release} == "bullseye"  || ${release} == "sid" ]]; then
+  sudo lb config --archive-areas "main contrib non-free" -d ${release} --security false --bootappend-live "live-config.nocomponents boot=live quiet splash"
 else
   sudo lb config --archive-areas "main contrib non-free" -d ${release} --bootappend-live "live-config.nocomponents boot=live quiet splash"
 fi
