@@ -64,6 +64,11 @@ wget https://f5vpn.geneseo.edu/public/download/linux_f5vpn.x86_64.deb
 dpkg -i linux_f5vpn.x86_64.deb
 rm -f linux_f5vpn.x86_64.deb
 
+# CACKEY
+wget http://cackey.rkeene.org/download/0.7.5/cackey_0.7.5-1_amd64.deb
+dpkg -i cackey_0.7.5-1_amd64.deb
+rm -f cackey_0.7.5-1_amd64.deb
+
 #Yaru
 #apt install -y git meson sassc libglib2.0-dev
 #su admin -c 'cd ~ && git clone --single-branch --branch ubuntu/eoan https://github.com/ubuntu/yaru.git'
