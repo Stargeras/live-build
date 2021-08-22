@@ -65,23 +65,19 @@ dpkg -i linux_f5vpn.x86_64.deb
 rm -f linux_f5vpn.x86_64.deb
 
 #Yaru
-: `
-apt install -y git meson sassc libglib2.0-dev
-su admin -c 'cd ~ && git clone --single-branch --branch ubuntu/eoan https://github.com/ubuntu/yaru.git'
-su admin -c 'cd ~/yaru && meson build'
-su admin -c 'sudo ninja -C ~/yaru/build/ install'
-rm -rf /home/admin/yaru
-`
-#Amarena
-: `
-su admin -c 'mkdir ~/Documents/build'
-su admin -c 'cd ~/Documents/build/ && git clone https://github.com/jaxwilko/gtk-theme-framework.git'
-su admin -c 'cd ~/Documents/build/gtk-theme-framework/ && sudo ./main.sh -io -t amarena -d /usr/share/themes/ -p /usr/share/icons/'
-su admin -c 'cd ~/Documents/build/gtk-theme-framework/ && sudo ./main.sh -io -t palenight -d /usr/share/themes/ -p /usr/share/icons/'
-su admin -c 'cd ~/Documents/build/gtk-theme-framework/ && sudo ./main.sh -io -t gruvterial -d /usr/share/themes/ -p /usr/share/icons/'
-su admin -c 'sudo rm -rf ~/Documents/build'
-`
+#apt install -y git meson sassc libglib2.0-dev
+#su admin -c 'cd ~ && git clone --single-branch --branch ubuntu/eoan https://github.com/ubuntu/yaru.git'
+#su admin -c 'cd ~/yaru && meson build'
+#su admin -c 'sudo ninja -C ~/yaru/build/ install'
+#rm -rf /home/admin/yaru
 
+#Amarena
+#su admin -c 'mkdir ~/Documents/build'
+#su admin -c 'cd ~/Documents/build/ && git clone https://github.com/jaxwilko/gtk-theme-framework.git'
+#su admin -c 'cd ~/Documents/build/gtk-theme-framework/ && sudo ./main.sh -io -t amarena -d /usr/share/themes/ -p /usr/share/icons/'
+#su admin -c 'cd ~/Documents/build/gtk-theme-framework/ && sudo ./main.sh -io -t palenight -d /usr/share/themes/ -p /usr/share/icons/'
+#su admin -c 'cd ~/Documents/build/gtk-theme-framework/ && sudo ./main.sh -io -t gruvterial -d /usr/share/themes/ -p /usr/share/icons/'
+#su admin -c 'sudo rm -rf ~/Documents/build'
 
 su admin -c 'mkdir -p ~/.config/autostart'
 su admin -c 'cat > ~/.config/autostart/script.desktop << EOF
