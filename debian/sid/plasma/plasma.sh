@@ -61,15 +61,14 @@ echo 'root:root' | chpasswd
 su admin -c 'xdg-user-dirs-update'
 
 su admin -c 'mkdir -p ~/.config/autostart'
-su admin -c 'cat > ~/.config/autostart/script.desktop << EOF
+cat > /home/admin/.config/autostart/script.desktop << EOF
 [Desktop Entry]
 Name=script
 GenericName=config script
-Exec=/home/admin/Documents/config.sh
+Exec=sh /home/admin/Documents/config.sh
 Terminal=false
 Type=Application
-X-GNOME-Autostart-enabled=true
-EOF'
+EOF
 su admin -c 'chmod +x ~/.config/autostart/script.desktop'
 
 cat > /etc/xdg/dolphinrc << EOF
