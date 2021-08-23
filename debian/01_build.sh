@@ -42,9 +42,5 @@ sudo lb binary
 now=$(date +"%m%d%Y")
 sudo mv ${workspacedir}/live-image-amd64.hybrid.iso debian-${release}-${flavor}-$now.iso
 
-# SERVE OVER HTTP
-sudo apt install -y apache2
-sudo mkdir -p /var/www/html/releases
-sudo systemctl start apache2
-sudo mv ${workspacedir}/*.iso /var/www/html/releases/
-ip a
+# RUN 02 HTTP
+sudo bash ${basedir}/02_http_upload.sh
