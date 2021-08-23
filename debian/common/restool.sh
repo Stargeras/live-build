@@ -1,3 +1,14 @@
+#!/bin/bash
+
+if [[ ! -z $1 && ! -z $2 ]]; then
+  modeline=$(cvt $1 $2 | grep Modeline | cut -f 2- -d ' ')
+  res=$(cvt $1 $2 | grep Modeline | awk '{print$2}')
+  xrandr --newmode ${modeline}
+  xrandr --addmode Virtual1 ${res}
+  xrandr --output Virtual1 --mode ${res}
+  exit
+fi
+
 echo "Virtual screen detected, enter the number corresponding to your desired reolution below:"
 menu1="1: 1920x1080 (1080p)
 2: 1600x900
