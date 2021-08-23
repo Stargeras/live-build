@@ -46,33 +46,6 @@ ToolBarsMovable=Disabled
 Width 1920=1187
 EOF
 
-cat > /home/admin/Documents/config.sh << EOF
-lookandfeeltool -a org.kde.breezedark.desktop
-sed -i "s#ordering=#ordering=preferred://browser,applications:systemsettings.desktop,applications:org.kde.dolphin.desktop,applications:org.kde.kate.desktop,applications:org.kde.discover.desktop,applications:org.kde.konsole.desktop#g" ~/.config/kactivitymanagerd-statsrc
-sed -i "s#BrowserApplication#BrowserApplication=firefox.desktop#g" ~/.config/kdeglobals
-kquitapp5 plasmashell
-kstart5 plasmashell
-# OLD
-#sqlite3 ~/.local/share/kactivitymanagerd/resources/database 'SELECT * FROM ResourceLink;'
-#sqlite3 ~/.local/share/kactivitymanagerd/resources/database 'DELETE FROM ResourceLink;'
-#sqlite3 ~/.local/share/kactivitymanagerd/resources/database 'INSERT INTO ResourceLink  VALUES (":global","org.kde.plasma.favorites.applications","applications:chromium.desktop");'
-#sqlite3 ~/.local/share/kactivitymanagerd/resources/database 'INSERT INTO ResourceLink  VALUES (":global","org.kde.plasma.favorites.applications","applications:firefox.desktop");'
-#sqlite3 ~/.local/share/kactivitymanagerd/resources/database 'INSERT INTO ResourceLink  VALUES (":global","org.kde.plasma.favorites.applications","applications:org.kde.dolphin.desktop");'
-#sqlite3 ~/.local/share/kactivitymanagerd/resources/database 'INSERT INTO ResourceLink  VALUES (":global","org.kde.plasma.favorites.applications","applications:org.kde.konsole.desktop");'
-#sqlite3 ~/.local/share/kactivitymanagerd/resources/database 'INSERT INTO ResourceLink  VALUES (":global","org.kde.plasma.favorites.applications","applications:org.kde.kate.desktop");'
-#sqlite3 ~/.local/share/kactivitymanagerd/resources/database 'INSERT INTO ResourceLink  VALUES (":global","org.kde.plasma.favorites.applications","applications:systemsettings.desktop");'
-
-#kwriteconfig5 --file plasmarc --group Theme --key name breeze-dark
-#kwriteconfig5 --file kdeglobals --group General --key ColorScheme "Breeze Dark"
-#kwriteconfig5 --file kdeglobals --group General --key Name breeze-dark
-#kwriteconfig5 --file kdeglobals --group KDE --key LookAndFeelPackage org.kde.breezedark.desktop
-#kwriteconfig5 --file kdeglobals --group icons --key Theme breeze-dark
-#kwriteconfig5 --file gtk-3.0/settings.ini --group Settings --key gtk-theme-name "Breeze Dark"
-#kwriteconfig5 --file gtk-3.0/settings.ini --group Settings --key gtk-icon-theme-name breeze-dark
-#kwriteconfig5 --file gtk-3.0/settings.ini --group Settings --key gtk-application-prefer-dark-theme true
-EOF
-chmod +x /home/admin/Documents/config.sh
-
 mkdir -p /home/admin/.config/autostart
 cat > /home/admin/.config/autostart/script.desktop << EOF
 [Desktop Entry]
