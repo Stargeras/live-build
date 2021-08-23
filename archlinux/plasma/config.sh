@@ -5,7 +5,7 @@ lookandfeeltool -a org.kde.breezedark.desktop
 #sed -i "s#BrowserApplication#BrowserApplication=firefox.desktop#g" ~/.config/kdeglobals
 kwriteconfig5 --file kdeglobals --group General --key BrowserApplication firefox.desktop
 
-favorites="chromium.desktop firefox.desktop org.kde.dolphin.desktop org.kde.konsole.desktop org.kde.kate.desktop systemsettings.desktop"
+favorites="chromium.desktop org.kde.dolphin.desktop org.kde.konsole.desktop org.kde.kate.desktop systemsettings.desktop"
 sqlite3 ~/.local/share/kactivitymanagerd/resources/database 'SELECT * FROM ResourceLink;'
 sqlite3 ~/.local/share/kactivitymanagerd/resources/database 'DELETE FROM ResourceLink;'
 for favorite in ${favorites}; do
