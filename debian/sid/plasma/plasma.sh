@@ -11,7 +11,7 @@
 
 
 apt update
-apt install -y plasma-desktop sddm konsole dolphin kate ssh firefox-esr cackey\
+apt install -y plasma-desktop sddm konsole dolphin kate ssh firefox-esr chromium cackey\
  gparted celluloid flatpak cups git neofetch vim curl gparted bash-completion\
  debootstrap systemd-container arch-install-scripts network-manager-openvpn-gnome\
  virt-viewer
