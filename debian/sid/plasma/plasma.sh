@@ -12,7 +12,7 @@
 
 apt update
 apt install -y plasma-desktop sddm konsole dolphin kate ssh firefox-esr chromium cackey\
- gparted celluloid flatpak cups git neofetch vim curl gparted bash-completion\
+ gparted celluloid flatpak cups git neofetch vim curl gparted bash-completion sqlite\
  debootstrap systemd-container arch-install-scripts network-manager-openvpn-gnome\
  virt-viewer
  #slack-desktop doesn't work
