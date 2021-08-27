@@ -11,7 +11,7 @@
 
 
 apt update
-apt install -y gnome firefox-esr neofetch ssh vim curl bash-completion\
+apt install -y gnome firefox-esr chromium neofetch ssh vim curl bash-completion\
  gparted celluloid gnome-shell-extension-dash-to-panel flatpak cups git cackey\
  debootstrap systemd-container arch-install-scripts network-manager-openvpn-gnome\
  virt-viewer gnome-games-
