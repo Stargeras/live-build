@@ -40,7 +40,7 @@ sudo mkarchiso -v .
 
 # RENAME FINAL
 now=$(date +"%m%d%Y")
-sudo mv ${workspacedir}/out/* ${workspacedir}/archlinux-${flavor}-$now.iso
+sudo mv ${workspacedir}/out/* ${workspacedir}/archlinux-${flavor}-${now}.iso
 
 # RUN 02 HTTP
 sudo bash ${basedir}/02_http_upload.sh
