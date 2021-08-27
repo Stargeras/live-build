@@ -40,7 +40,7 @@ sudo lb binary
 
 # RENAME FINAL
 now=$(date +"%m%d%Y")
-sudo mv ${workspacedir}/live-image-amd64.hybrid.iso debian-${release}-${flavor}-$now.iso
+sudo mv ${workspacedir}/live-image-amd64.hybrid.iso debian-${release}-${flavor}-${now}.iso
 
 # RUN 02 HTTP
 sudo bash ${basedir}/02_http_upload.sh
