@@ -7,7 +7,10 @@ filesdir="${basedir}/${flavor}"
 scriptname="${flavor}.sh"
 
 # Install archiso
-sudo pacman -S archiso --noconfirm
+package="archiso"
+if ! pacman -Q ${package} > /dev/null 2>&1; then
+  sudo pacman -S ${package} --noconfirm
+fi
 
 # COPY BUILD-FILES
 #sudo chown -R jenkins:users ${filesdir}
