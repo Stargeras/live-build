@@ -17,6 +17,14 @@ wget http://cackey.rkeene.org/download/0.7.5/cackey_0.7.5-1_amd64.deb
 dpkg -i cackey_0.7.5-1_amd64.deb
 rm -f cackey_0.7.5-1_amd64.deb
 
+# Zorin Theme
+git clone https://github.com/ZorinOS/zorin-desktop-themes.git
+git clone https://github.com/ZorinOS/zorin-icon-themes.git
+cp -r zorin-desktop-themes/Zorin* /usr/share/themes/
+cp -r zorin-icon-themes/Zorin* /usr/share/icons
+rm -rf zorin-desktop-themes
+rm -rf zorin-icon-themes
+
 #Yaru
 #apt install -y git meson sassc libglib2.0-dev
 #su admin -c 'cd ~ && git clone --single-branch --branch ubuntu/eoan https://github.com/ubuntu/yaru.git'
