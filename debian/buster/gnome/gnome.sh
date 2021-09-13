@@ -1,11 +1,13 @@
 #!/bin/bash
 
-apt update
-apt install -y gnome firefox-esr \
- gparted vlc gnome-shell-extension-dash-to-panel flatpak cups\
- materia-gtk-theme papirus-icon-theme systemd-container neofetch\
+packages="gnome firefox-esr gnome-shell-extension-dash-to-panel\
+ gparted vlc  flatpak cups systemd-container\
+ materia-gtk-theme papirus-icon-theme  neofetch\
  network-manager-openvpn-gnome virt-viewer freerdp2-x11\
- gnome-games-
+ gnome-games-"
+
+apt update
+apt install -y ${packages}
 
 # F5VPN
 wget https://f5vpn.geneseo.edu/public/download/linux_f5vpn.x86_64.deb
