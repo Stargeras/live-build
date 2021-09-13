@@ -1,10 +1,11 @@
 #!/bin/bash
 
-apt update
-apt install -y plasma-desktop sddm konsole dolphin kate firefox-esr chromium cackey\
+packages="plasma-desktop sddm konsole dolphin kate firefox-esr chromium cackey\
  gparted celluloid flatpak cups neofetch gparted bash-completion sqlite\
- systemd-container network-manager-openvpn-gnome virt-viewer
- #slack-desktop doesn't work
+ systemd-container network-manager-openvpn-gnome virt-viewer"
+
+apt update
+apt install -y ${packages}
 
 su admin -c 'mkdir -p ~/.config/autostart'
 cat > /home/admin/.config/autostart/script.desktop << EOF
