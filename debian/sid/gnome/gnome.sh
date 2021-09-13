@@ -1,13 +1,23 @@
 #!/bin/bash
 
-packages="gnome firefox-esr neofetch ssh vim curl bash-completion virt-viewer\
- gparted celluloid gnome-shell-extension-dash-to-panel flatpak cups git\
- debootstrap systemd-container arch-install-scripts network-manager-openvpn-gnome\
- gnome-games-"
+packages="gnome firefox-esr neofetch ssh vim curl bash-completion virt-viewer \
+gparted celluloid gnome-shell-extension-dash-to-panel flatpak cups git \
+debootstrap systemd-container arch-install-scripts network-manager-openvpn-gnome \
+gnome-games-"
+
+httpdownloadurls="https://f5vpn.geneseo.edu/public/download/linux_f5vpn.x86_64.deb"
 
 apt update
 apt install -y ${packages}
- #slack-desktop doesn't work
+
+# Install from http links
+for url in ${httpdownloadurls}; do
+  # NF is the number of fields (also stands for the index of the last)
+  file=$(echo ${url} | awk -F / '{print$NF}')
+  wget ${url}
+  dpkg -i ${file}
+  rm -f ${file}
+done
 
 systemctl disable unattended-upgrades
 ln -sf /usr/share/zoneinfo/America/New_York /etc/localtime

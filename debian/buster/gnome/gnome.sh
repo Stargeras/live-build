@@ -1,23 +1,25 @@
 #!/bin/bash
 
-packages="gnome firefox-esr gnome-shell-extension-dash-to-panel\
- gparted vlc  flatpak cups systemd-container\
- materia-gtk-theme papirus-icon-theme  neofetch\
- network-manager-openvpn-gnome virt-viewer freerdp2-x11\
- gnome-games-"
+packages="gnome firefox-esr gnome-shell-extension-dash-to-panel \
+gparted vlc  flatpak cups systemd-container \
+materia-gtk-theme papirus-icon-theme  neofetch \
+network-manager-openvpn-gnome virt-viewer freerdp2-x11 \
+gnome-games-"
+
+httpdownloadurls="https://f5vpn.geneseo.edu/public/download/linux_f5vpn.x86_64.deb \
+http://cackey.rkeene.org/download/0.7.5/cackey_0.7.5-1_amd64.deb"
 
 apt update
 apt install -y ${packages}
 
-# F5VPN
-wget https://f5vpn.geneseo.edu/public/download/linux_f5vpn.x86_64.deb
-dpkg -i linux_f5vpn.x86_64.deb
-rm -f linux_f5vpn.x86_64.deb
-
-# CACKEY
-wget http://cackey.rkeene.org/download/0.7.5/cackey_0.7.5-1_amd64.deb
-dpkg -i cackey_0.7.5-1_amd64.deb
-rm -f cackey_0.7.5-1_amd64.deb
+# Install from http links
+for url in ${httpdownloadurls}; do
+  # NF is the number of fields (also stands for the index of the last)
+  file=$(echo ${url} | awk -F / '{print$NF}')
+  wget ${url}
+  dpkg -i ${file}
+  rm -f ${file}
+done
 
 # Zorin Theme
 git clone https://github.com/ZorinOS/zorin-desktop-themes.git

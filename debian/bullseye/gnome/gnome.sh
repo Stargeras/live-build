@@ -1,12 +1,23 @@
 #!/bin/bash
 
-packages="gnome firefox-esr chromium neofetch\
- gparted celluloid gnome-shell-extension-dash-to-panel flatpak cups cackey\
- systemd-container network-manager-openvpn-gnome virt-viewer\
- gnome-games-"
+packages="gnome firefox-esr chromium neofetch \
+gparted celluloid gnome-shell-extension-dash-to-panel flatpak cups cackey \
+systemd-container network-manager-openvpn-gnome virt-viewer \
+gnome-games-"
+
+httpdownloadurls="https://f5vpn.geneseo.edu/public/download/linux_f5vpn.x86_64.deb"
 
 apt update
 apt install -y ${packages}
+
+# Install from http links
+for url in ${httpdownloadurls}; do
+  # NF is the number of fields (also stands for the index of the last)
+  file=$(echo ${url} | awk -F / '{print$NF}')
+  wget ${url}
+  dpkg -i ${file}
+  rm -f ${file}
+done
 
 su admin -c 'mkdir -p ~/.config/autostart'
 su admin -c 'cat > ~/.config/autostart/script.desktop << EOF
@@ -19,11 +30,6 @@ Type=Application
 X-GNOME-Autostart-enabled=true
 EOF'
 su admin -c 'chmod +x ~/.config/autostart/script.desktop'
-
-# F5VPN
-wget https://f5vpn.geneseo.edu/public/download/linux_f5vpn.x86_64.deb
-dpkg -i linux_f5vpn.x86_64.deb
-rm -f linux_f5vpn.x86_64.deb
 
 ##Firefox title bar and flex space
 cat >> /etc/firefox-esr/firefox-esr.js << EOF
