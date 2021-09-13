@@ -1,5 +1,7 @@
 #!/bin/bash
 
+packages="xdg-user-dirs sudo ssh vim curl bash-completion git debootstrap arch-install-scripts"
+
 #cat >> /etc/apt/sources.list << EOF
 #private
 #deb [trusted=yes] http://23.82.1.13/deb/ buster main
@@ -10,7 +12,7 @@
 #EOF
 
 apt update
-apt install -y xdg-user-dirs sudo ssh vim curl bash-completion git debootstrap arch-install-scripts
+apt install -y ${packages}
 
 #apt update
 #apt upgrade -y
