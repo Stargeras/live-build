@@ -1,5 +1,9 @@
 #!/bin/bash
 
+packages="base-devel git bash-completion\
+ xorg-server xorg-apps xorg-xinit xdg-user-dirs\
+ xf86-video-vesa xf86-video-vmware xf86-video-intel xf86-video-amdgpu xf86-video-nouveau"
+
 pacman-key --init && pacman-key --populate
 sed -i '/evowise/d' /etc/pacman.d/mirrorlist
 sed -i '/CheckSpace/d' /etc/pacman.conf
@@ -7,7 +11,7 @@ pacman -Syu
 pacman -S reflector --noconfirm
 reflector --verbose --country 'United States' --sort rate --save /etc/pacman.d/mirrorlist
 pacman -Rsn clonezilla lftp nmap openconnect --noconfirm
-pacman -S bash-completion xorg-server xorg-apps xorg-xinit xdg-user-dirs base-devel git xf86-video-vesa xf86-video-vmware xf86-video-intel xf86-video-amdgpu xf86-video-nouveau --noconfirm
+pacman -S ${packages} --noconfirm
 
 cat >> /etc/pacman.conf << EOF
 [options]
