@@ -1,20 +1,12 @@
 #!/bin/bash
 
-#cat >> /etc/apt/sources.list << EOF
-#private
-#deb [trusted=yes] http://23.82.1.13/deb/ buster main
-#vscode
-#deb [arch=amd64,arm64,armhf] http://packages.microsoft.com/repos/code stable main
-#google-chrome
-#deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main
-#EOF
-
-
-apt update
-apt install -y gnome firefox-esr neofetch ssh vim curl bash-completion\
+packages="gnome firefox-esr neofetch ssh vim curl bash-completion virt-viewer\
  gparted celluloid gnome-shell-extension-dash-to-panel flatpak cups git\
  debootstrap systemd-container arch-install-scripts network-manager-openvpn-gnome\
- virt-viewer gnome-games-
+ gnome-games-"
+
+apt update
+apt install -y ${packages}
  #slack-desktop doesn't work
 
 systemctl disable unattended-upgrades
