@@ -1,11 +1,12 @@
 #!/bin/bash
 
-apt update
-apt install -y gnome firefox-esr chromium neofetch\
+packages="gnome firefox-esr chromium neofetch\
  gparted celluloid gnome-shell-extension-dash-to-panel flatpak cups cackey\
- systemd-container network-manager-openvpn-gnome\
- virt-viewer gnome-games-
- #slack-desktop doesn't work
+ systemd-container network-manager-openvpn-gnome virt-viewer\
+ gnome-games-"
+
+apt update
+apt install -y ${packages}
 
 su admin -c 'mkdir -p ~/.config/autostart'
 su admin -c 'cat > ~/.config/autostart/script.desktop << EOF
