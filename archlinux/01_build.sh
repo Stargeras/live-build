@@ -8,7 +8,7 @@ workspacedir="${basedir}/workspace"
 filesdir="${basedir}/${flavor}"
 scriptname="${flavor}.sh"
 
-# Install archiso
+# INSTALL ARCHISO
 package="archiso"
 if ! pacman -Q ${package} > /dev/null 2>&1; then
   sudo pacman -S ${package} --noconfirm
