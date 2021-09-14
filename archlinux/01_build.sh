@@ -1,8 +1,10 @@
 #!/bin/bash
 
+serveoverhttp=true
+removeworkspaceafterbuild=true
 basedir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 flavor=$1
-workspacedir="/srv/workspace/archbuild"
+workspacedir="${basedir}/workspace"
 filesdir="${basedir}/${flavor}"
 scriptname="${flavor}.sh"
 
@@ -46,4 +48,8 @@ now=$(date +"%m%d%Y")
 sudo mv ${workspacedir}/out/* ${workspacedir}/archlinux-${flavor}-${now}.iso
 
 # RUN 02 HTTP
-sudo bash ${basedir}/02_http_upload.sh
+if ${serveoverhttp}; then
+  sudo bash ${basedir}/02_http_upload.sh
+else
+  echo "build available at ${workspacedir}/archlinux-${flavor}-${now}.iso"
+fi
