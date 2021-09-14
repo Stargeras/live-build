@@ -12,7 +12,7 @@ ips=$(ip a | grep "scope" | grep -Po '(?<=inet )[\d.]+')
 echo "build available at:"
 for ip in ${ips}; do
   echo "http://${ip}/releases/archlinux-${flavor}-${now}.iso"
-fi
+done
 
 # Remove workspace
 if ${removeworkspaceafterbuild}; then
