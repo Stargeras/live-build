@@ -1,12 +1,12 @@
 #!/bin/bash
 
-serveoverhttp=true
-removeworkspaceafterbuild=true
-basedir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
-flavor=$1
-workspacedir="${basedir}/workspace"
-filesdir="${basedir}/${flavor}"
-scriptname="${flavor}.sh"
+export serveoverhttp=true
+export removeworkspaceafterbuild=true
+export basedir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+export flavor=$1
+export workspacedir="${basedir}/workspace"
+export filesdir="${basedir}/${flavor}"
+export scriptname="${flavor}.sh"
 
 # Install archiso
 package="archiso"
