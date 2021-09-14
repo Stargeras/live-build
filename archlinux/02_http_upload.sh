@@ -16,5 +16,5 @@ done
 
 # Remove workspace
 if ${removeworkspaceafterbuild}; then
-  rm -rf ${workspacedir}
+  sudo rm -rf ${workspacedir}
 fi

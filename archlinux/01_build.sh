@@ -49,7 +49,7 @@ sudo mv ${workspacedir}/out/* ${workspacedir}/archlinux-${flavor}-${now}.iso
 
 # RUN 02 HTTP
 if ${serveoverhttp}; then
-  sudo bash ${basedir}/02_http_upload.sh
+  bash ${basedir}/02_http_upload.sh
 else
   echo "build available at ${workspacedir}/archlinux-${flavor}-${now}.iso"
 fi
