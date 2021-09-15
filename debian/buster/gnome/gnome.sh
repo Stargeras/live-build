@@ -44,17 +44,17 @@ rm -rf zorin-icon-themes
 #su admin -c 'cd ~/Documents/build/gtk-theme-framework/ && sudo ./main.sh -io -t gruvterial -d /usr/share/themes/ -p /usr/share/icons/'
 #su admin -c 'sudo rm -rf ~/Documents/build'
 
-su admin -c 'mkdir -p ~/.config/autostart'
-su admin -c 'cat > ~/.config/autostart/script.desktop << EOF
+su admin -c 'mkdir -p \$HOME/.config/autostart'
+su admin -c 'cat > \$HOME/.config/autostart/script.desktop << EOF
 [Desktop Entry]
 Name=script
 GenericName=config script
-Exec=/home/admin/Documents/config.sh
+Exec=\$HOME/Documents/config.sh
 Terminal=false
 Type=Application
 X-GNOME-Autostart-enabled=true
 EOF'
-su admin -c 'chmod +x ~/.config/autostart/script.desktop'
+su admin -c 'chmod +x \$HOME/.config/autostart/script.desktop'
 
 ##Firefox title bar and flex space
 cat >> /etc/firefox-esr/firefox-esr.js << EOF
