@@ -61,11 +61,10 @@ if ${serveoverhttp}; then
   for ip in ${ips}; do
     echo "http://${ip}/releases/archlinux-${flavor}-${now}.iso"
   done
+  # REMOVE WORKSPACE
+  if ${removeworkspaceafterbuild}; then
+    sudo rm -rf ${workspacedir}
+  fi
 else
   echo "build available at ${workspacedir}/archlinux-${flavor}-${now}.iso"
-fi
-
-# REMOVE WORKSPACE
-if ${removeworkspaceafterbuild}; then
-  sudo rm -rf ${workspacedir}
 fi
