@@ -1,9 +1,11 @@
 #!/bin/bash
 
+serveoverhttp=true
+removeworkspaceafterbuild=true
 basedir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 release=$1
 flavor=$2
-workspacedir="/srv/workspace/debianbuild"
+workspacedir="${basedir}/workspace"
 filesdir="${basedir}/${release}/${flavor}"
 scriptname="${flavor}.sh"
 
@@ -43,5 +45,24 @@ sudo lb binary
 now=$(date +"%m%d%Y")
 sudo mv ${workspacedir}/live-image-amd64.hybrid.iso debian-${release}-${flavor}-${now}.iso
 
-# RUN 02 HTTP
-sudo bash ${basedir}/02_http_upload.sh
+# SERVE OVER HTTP
+if ${serveoverhttp}; then
+  package="apache2"
+  if ! apt list --installed ${package} > /dev/null 2>&1; then
+    sudo apt install -y ${package}
+  fi
+  sudo mkdir -p /var/www/html/releases
+  sudo systemctl start apache2
+  sudo mv ${workspacedir}/*.iso /var/www/html/releases/
+  ips=$(ip a | grep "scope" | grep -Po '(?<=inet )[\d.]+')
+  echo "build available at:"
+  for ip in ${ips}; do
+    echo "http://${ip}/releases/debian-${release}-${flavor}-${now}.iso"
+  done
+  # REMOVE WORKSPACE
+  if ${removeworkspaceafterbuild}; then
+    sudo rm -rf ${workspacedir}
+  fi
+else
+  echo "build available at ${workspacedir}/debian-${release}-${flavor}-${now}.iso"
+fi
