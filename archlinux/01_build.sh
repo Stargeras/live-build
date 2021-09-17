@@ -7,7 +7,7 @@ flavor=$1
 workspacedir="${basedir}/workspace"
 filesdir="${basedir}/${flavor}"
 scriptname="${flavor}.sh"
-username="archbuild"
+username="admin"
 
 # INSTALL ARCHISO
 package="archiso"
