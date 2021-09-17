@@ -8,6 +8,7 @@ flavor=$2
 workspacedir="${basedir}/workspace"
 filesdir="${basedir}/${release}/${flavor}"
 scriptname="${flavor}.sh"
+username="live"
 
 # Install archiso
 sudo apt install -y debootstrap arch-install-scripts live-build
@@ -19,6 +20,7 @@ if [[ ! -d ${workspacedir}/build-files ]]; then
 fi
 sudo cp ${filesdir}/* ${workspacedir}/build-files/
 sudo cp ${basedir}/common/* ${workspacedir}/build-files/
+sudo echo ${username} > ${workspacedir}/build-files/username
 
 # RUN STAGES
 cd ${workspacedir}

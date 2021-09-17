@@ -1,5 +1,6 @@
 #!/bin/bash
 
+username=$(cat /root/username)
 packages="xdg-user-dirs sudo ssh vim curl bash-completion git debootstrap arch-install-scripts"
 
 #cat >> /etc/apt/sources.list << EOF
@@ -48,11 +49,11 @@ Section "Screen"
 EndSection
 EOF
 
-useradd -m -g users -s /bin/bash -G sudo,netdev,disk admin
+useradd -m -g users -s /bin/bash -G sudo,netdev,disk ${username}
 cat >> /etc/sudoers << EOF
 %sudo ALL=(ALL) NOPASSWD: ALL
 EOF
-echo 'admin:admin' |chpasswd
+echo "${username}:${username}" |chpasswd
 echo 'root:root' | chpasswd
 #add home dirs
-su admin -c 'xdg-user-dirs-update'
+su ${username} -c 'xdg-user-dirs-update'
