@@ -5,10 +5,8 @@ gparted vlc  flatpak cups systemd-container \
 materia-gtk-theme papirus-icon-theme  neofetch \
 network-manager-openvpn-gnome virt-viewer freerdp2-x11 \
 gnome-games-"
-
 httpdownloadurls="https://f5vpn.geneseo.edu/public/download/linux_f5vpn.x86_64.deb \
 http://cackey.rkeene.org/download/0.7.5/cackey_0.7.5-1_amd64.deb"
-
 username=$(cat /root/username)
 
 apt update
@@ -46,8 +44,8 @@ rm -rf zorin-icon-themes
 #su ${username} -c 'cd ~/Documents/build/gtk-theme-framework/ && sudo ./main.sh -io -t gruvterial -d /usr/share/themes/ -p /usr/share/icons/'
 #su ${username} -c 'sudo rm -rf ~/Documents/build'
 
-su ${username} -c 'mkdir -p \$HOME/.config/autostart'
-su ${username} -c 'cat > \$HOME/.config/autostart/script.desktop << EOF
+su ${username} -c "mkdir -p \$HOME/.config/autostart"
+su ${username} -c "cat > \$HOME/.config/autostart/script.desktop << EOF
 [Desktop Entry]
 Name=script
 GenericName=config script
@@ -55,8 +53,8 @@ Exec=\$HOME/Documents/config.sh
 Terminal=false
 Type=Application
 X-GNOME-Autostart-enabled=true
-EOF'
-su ${username} -c 'chmod +x \$HOME/.config/autostart/script.desktop'
+EOF"
+su ${username} -c "chmod +x \$HOME/.config/autostart/script.desktop"
 
 ##Firefox title bar and flex space
 cat >> /etc/firefox-esr/firefox-esr.js << EOF

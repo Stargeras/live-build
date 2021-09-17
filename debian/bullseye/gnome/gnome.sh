@@ -4,8 +4,8 @@ packages="gnome firefox-esr chromium neofetch \
 gparted celluloid gnome-shell-extension-dash-to-panel flatpak cups cackey \
 systemd-container network-manager-openvpn-gnome virt-viewer \
 gnome-games-"
-
 httpdownloadurls="https://f5vpn.geneseo.edu/public/download/linux_f5vpn.x86_64.deb"
+username=$(cat /root/username)
 
 apt update
 apt install -y ${packages}
@@ -19,17 +19,17 @@ for url in ${httpdownloadurls}; do
   rm -f ${file}
 done
 
-su admin -c 'mkdir -p ~/.config/autostart'
-su admin -c 'cat > ~/.config/autostart/script.desktop << EOF
+su ${username} -c "mkdir -p \$HOME/.config/autostart"
+su ${username} -c "cat > \$HOME/.config/autostart/script.desktop << EOF
 [Desktop Entry]
 Name=script
 GenericName=config script
-Exec=/home/admin/Documents/config.sh
+Exec=\$HOME/Documents/config.sh
 Terminal=false
 Type=Application
 X-GNOME-Autostart-enabled=true
-EOF'
-su admin -c 'chmod +x ~/.config/autostart/script.desktop'
+EOF"
+su ${username} -c "chmod +x \$HOME/.config/autostart/script.desktop"
 
 ##Firefox title bar and flex space
 cat >> /etc/firefox-esr/firefox-esr.js << EOF
@@ -38,7 +38,7 @@ pref("browser.uiCustomization.state", "{\"placements\":{\"widget-overflow-fixed-
 EOF
 
 ##Set XORG as default session
-cat > /var/lib/AccountsService/users/admin << EOF
+cat > /var/lib/AccountsService/users/${username} << EOF
 [User]
 Language=
 XSession=gnome-xorg
@@ -46,10 +46,10 @@ EOF
 
 #Yaru
 apt install -y git meson sassc libglib2.0-dev
-su admin -c 'cd ~ && git clone https://github.com/ubuntu/yaru.git'
-su admin -c 'cd ~/yaru && meson build'
-su admin -c 'sudo ninja -C ~/yaru/build/ install'
-rm -rf /home/admin/yaru
+su ${username} -c "cd \${HOME} && git clone https://github.com/ubuntu/yaru.git"
+su ${username} -c "cd \${HOME}/yaru && meson build"
+su ${username} -c "sudo ninja -C \${HOME}/yaru/build/ install"
+rm -rf /home/${username}/yaru
 
 #Material-shell
 git clone https://github.com/material-shell/material-shell.git /usr/share/gnome-shell/extensions/material-shell@papyelgringo
@@ -57,7 +57,7 @@ git clone https://github.com/material-shell/material-shell.git /usr/share/gnome-
 #disable wayland gdm
 #echo 'WaylandEnable=false' >> /etc/gdm3/custom.conf
 
-cat >> /home/admin/Documents/adwaita.sh << EOF
+cat >> /home/${username}/Documents/adwaita.sh << EOF
 gsettings set org.gnome.desktop.background picture-uri 'file:///usr/share/backgrounds/gnome/adwaita-timed.xml'
 gsettings set org.gnome.shell enabled-extensions "['']"
 gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita'
@@ -66,6 +66,6 @@ gsettings set org.gnome.desktop.interface cursor-theme 'Adwaita'
 EOF
 
 #copy config files
-cp /root/* /home/admin/Documents/
-chmod +x /home/admin/Documents/*.sh
-chown -R admin:users /home/admin/
+cp /root/* /home/${username}/Documents/
+chmod +x /home/${username}/Documents/*.sh
+chown -R ${username}:users /home/${username}/

@@ -3,8 +3,8 @@
 packages="plasma-desktop sddm konsole dolphin kate firefox-esr chromium cackey\
  gparted celluloid flatpak cups neofetch gparted bash-completion sqlite\
  systemd-container network-manager-openvpn-gnome virt-viewer"
-
 httpdownloadurls="https://f5vpn.geneseo.edu/public/download/linux_f5vpn.x86_64.deb"
+username=$(cat /root/username)
 
 apt update
 apt install -y ${packages}
@@ -18,16 +18,16 @@ for url in ${httpdownloadurls}; do
   rm -f ${file}
 done
 
-su admin -c 'mkdir -p ~/.config/autostart'
-cat > /home/admin/.config/autostart/script.desktop << EOF
+mkdir -p /home/${username}/.config/autostart
+cat > /home/${username}/.config/autostart/script.desktop << EOF
 [Desktop Entry]
 Name=script
 GenericName=config script
-Exec=sh /home/admin/Documents/config.sh
+Exec=sh /home/\${username}/Documents/config.sh
 Terminal=false
 Type=Application
 EOF
-su admin -c 'chmod +x ~/.config/autostart/script.desktop'
+chmod +x /home/${username}/.config/autostart/script.desktop
 
 cat > /etc/xdg/dolphinrc << EOF
 [General]
@@ -40,7 +40,6 @@ ToolBarsMovable=Disabled
 Width 1920=1187
 EOF
 
-
 ##Firefox title bar and flex space
 cat >> /etc/firefox-esr/firefox-esr.js << EOF
 pref("browser.tabs.drawInTitlebar", true);
@@ -48,6 +47,6 @@ pref("browser.uiCustomization.state", "{\"placements\":{\"widget-overflow-fixed-
 EOF
 
 #copy config files
-cp /root/* /home/admin/Documents/
-chmod +x /home/admin/Documents/*.sh
-chown -R admin:users /home/admin/
+cp /root/* /home/${username}/Documents/
+chmod +x /home/${username}/Documents/*.sh
+chown -R ${username}:users /home/${username}/
