@@ -1,5 +1,6 @@
 #!/bin/bash
 
+username=$(cat /root/username)
 packages="base-devel git bash-completion \
 xorg-server xorg-apps xorg-xinit xdg-user-dirs \
 xf86-video-vesa xf86-video-vmware xf86-video-intel xf86-video-amdgpu xf86-video-nouveau"
@@ -32,22 +33,23 @@ IgnorePkg  = linux
 EOF
 ln -sf /usr/share/zoneinfo/America/New_York /etc/localtime
 
-# CREATE ADMIN USER
-useradd -m -g users -s /bin/bash -G wheel,storage,power admin
+# CREATE USER ACCOUNT
+useradd -m -g users -s /bin/bash -G wheel,storage,power ${username}
 
 # ALLOW WHEEL SUDO
 echo '%wheel ALL=(ALL) ALL' >> /etc/sudoers
 echo '%wheel ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
 
 # SET DEFAULT PWS
-echo 'admin:admin' |chpasswd
+echo "${username}:${username}" |chpasswd
 echo 'root:root' | chpasswd
 
 # CREATE HOME DIRS
-su admin -c 'xdg-user-dirs-update '
-su admin -c 'cp /etc/X11/xinit/xinitrc ~/.xinitrc'
-su admin -c 'chmod +x ~/.xinitrc'
-su admin -c  'sed -i "$ d" ~/.xinitrc'
+su ${username} -c "xdg-user-dirs-update"
+cp /etc/X11/xinit/xinitrc /home/${username}/.xinitrc
+sed -i "$ d" /home/${username}/.xinitrc
+chmod +x /home/${username}/.xinitrc
+chown ${username}:users /home/${username}/.xinitrc
 
 # SET DEFAULT RESOLUTION TO 1080P (XORG)
 cat > /etc/X11/xorg.conf << EOF

@@ -3,16 +3,18 @@ packages="plasma firefox chromium neofetch htop gparted print-manager \
         konsole dolphin gwenview ark kate qbittorrent celluloid \
         virt-viewer cups freerdp code ttf-droid"
 aurpackages="f5vpn cackey"
+username=$(cat /root/username)
 
 pacman -S ${packages} --noconfirm #code npm nodejs
 systemctl enable NetworkManager
 systemctl enable sshd
 systemctl enable sddm
 systemctl enable cups-browsed
-su admin -c 'cat >> ~/.bashrc << EOF
+cat >> /home/${username}/.bashrc << EOF
 export PS1="\[\e[31m\]\u\[\e[m\]@\h\[\e[34m\]\w\[\e[m\]\\$ "
-EOF'
-su admin -c 'echo "exec startplasma-x11" >> ~/.xinitrc'
+EOF
+chown ${username}:users /home/${username}/.bashrc
+#su ${username} -c 'echo "exec startplasma-x11" >> ~/.xinitrc'
 #sddm
 cp -r /usr/lib/sddm/sddm.conf.d /etc/
 sed -i "s/Current=/Current=breeze/g" /etc/sddm.conf.d/default.conf
@@ -20,11 +22,11 @@ sed -i "s/CursorTheme=/CursorTheme=breeze_cursors/g" /etc/sddm.conf.d/default.co
 
 # AUR Pakages
 for package in ${aurpackages}; do
-  aurdir="~/Documents/build"
-  su admin -c "mkdir -p ${aurdir}"
-  su admin -c "cd ${aurdir} && git clone https://aur.archlinux.org/${package}.git"
-  su admin -c "cd ${aurdir}/${package}/ && makepkg -si --noconfirm"
-  su admin -c "sudo rm -rf ${aurdir}"
+  aurdir="\${HOME}/Documents/build"
+  su ${username} -c "mkdir -p ${aurdir}"
+  su ${username} -c "cd ${aurdir} && git clone https://aur.archlinux.org/${package}.git"
+  su ${username} -c "cd ${aurdir}/${package}/ && makepkg -si --noconfirm"
+  su ${username} -c "sudo rm -rf ${aurdir}"
 done
 
 #Firefox
@@ -46,20 +48,21 @@ ToolBarsMovable=Disabled
 Width 1920=1187
 EOF
 
-mkdir -p /home/admin/.config/autostart
-cat > /home/admin/.config/autostart/script.desktop << EOF
+mkdir -p /home/${username}/.config/autostart
+cat > /home/${username}/.config/autostart/script.desktop << EOF
 [Desktop Entry]
 Name=script
 GenericName=config script
-Exec=sh /home/admin/Documents/config.sh
+Exec=sh /home/${username}/Documents/config.sh
 Terminal=false
 Type=Application
 EOF
-chmod +x /home/admin/.config/autostart/script.desktop
+chmod +x /home/${username}/.config/autostart/script.desktop
 
-cp /root/* /home/admin/Documents/
-chmod +x /home/admin/Documents/*.sh
-chown -R admin:users /home/admin/
+#copy config files
+cp /root/* /home/${username}/Documents/
+chmod +x /home/${username}/Documents/*.sh
+chown -R ${username}:users /home/${username}/
 
 # cat > /etc/xdg/kactivitymanagerd-statsrc << EOF
 # [Favorites-org.kde.plasma.kickoff.favorites.instance-3-global]

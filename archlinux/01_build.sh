@@ -7,6 +7,7 @@ flavor=$1
 workspacedir="${basedir}/workspace"
 filesdir="${basedir}/${flavor}"
 scriptname="${flavor}.sh"
+username="archbuild"
 
 # INSTALL ARCHISO
 package="archiso"
@@ -21,6 +22,7 @@ if [[ ! -d ${workspacedir}/build-files ]]; then
 fi
 sudo cp ${filesdir}/* ${workspacedir}/build-files/
 sudo cp ${basedir}/common/* ${workspacedir}/build-files/
+sudo echo ${username} > ${workspacedir}/build-files/username
 
 # ARCHISO CONFIG
 sudo cp -r /usr/share/archiso/configs/releng/* ${workspacedir}/
