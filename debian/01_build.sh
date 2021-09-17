@@ -8,7 +8,7 @@ flavor=$2
 workspacedir="${basedir}/workspace"
 filesdir="${basedir}/${release}/${flavor}"
 scriptname="${flavor}.sh"
-username="live"
+username="admin"
 
 # Install archiso
 sudo apt install -y debootstrap arch-install-scripts live-build
