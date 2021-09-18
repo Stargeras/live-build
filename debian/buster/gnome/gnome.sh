@@ -7,8 +7,8 @@ network-manager-openvpn-gnome virt-viewer freerdp2-x11 \
 gnome-games-"
 httpdownloadurls="https://f5vpn.geneseo.edu/public/download/linux_f5vpn.x86_64.deb \
 http://cackey.rkeene.org/download/0.7.5/cackey_0.7.5-1_amd64.deb"
-username=$(cat /root/username)
 builddir="/srv/build-files"
+username=$(cat ${builddir}username)
 
 apt update
 apt install -y ${packages}
