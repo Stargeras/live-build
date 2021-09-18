@@ -1,6 +1,7 @@
 #!/bin/bash
 
-username=$(cat /root/username)
+username=$(cat /root/build-files/username)
+defaultresolution=$(cat /root/build-files/defaultresolution)
 packages="base-devel git bash-completion \
 xorg-server xorg-apps xorg-xinit xdg-user-dirs \
 xf86-video-vesa xf86-video-vmware xf86-video-intel xf86-video-amdgpu xf86-video-nouveau"
@@ -51,12 +52,12 @@ sed -i "$ d" /home/${username}/.xinitrc
 chmod +x /home/${username}/.xinitrc
 chown ${username}:users /home/${username}/.xinitrc
 
-# SET DEFAULT RESOLUTION TO 1080P (XORG)
+# SET DEFAULT RESOLUTION
 cat > /etc/X11/xorg.conf << EOF
 Section "Monitor"
     Identifier      "IntegratedDisplay0"
-    Modeline        "1920x1080_60.00"  173.00  1920 2048 2248 2576  1080 1083 1088 1120 -hsync +vsync
-    Option          "PreferredMode" "1920x1080_60.00"
+    Modeline        $(cvt ${defaultresolution} | grep Modeline | cut -f 2- -d ' ')
+    Option          "PreferredMode" $(cvt ${defaultresolution} | grep Modeline | awk '{print$2}')
 EndSection
 Section "Screen"
         Identifier "Screen0"
@@ -65,7 +66,7 @@ Section "Screen"
         SubSection "Display"
                 Viewport   0 0
                 Depth    24
-                Modes "1920x1080"
+                Modes $(cvt ${defaultresolution} | grep Modeline | awk '{print$2}')
         EndSubSection
 EndSection
 EOF
