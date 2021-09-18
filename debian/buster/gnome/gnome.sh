@@ -12,7 +12,6 @@ username=$(cat ${builddir}/username)
 
 apt update
 apt install -y ${packages}
-mkdir -p ${userbuilddir}
 
 # Install from http links
 for url in ${httpdownloadurls}; do

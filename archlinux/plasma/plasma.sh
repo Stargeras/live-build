@@ -3,16 +3,14 @@ packages="plasma firefox chromium neofetch htop gparted print-manager \
         konsole dolphin gwenview ark kate qbittorrent celluloid \
         virt-viewer cups freerdp code ttf-droid"
 aurpackages="f5vpn cackey"
-username=$(cat /root/build-files/username)
-builddir="/root/build-files"
-userbuilddir="/home/${username}/Documents/build-files"
+builddir="/srv/build-files"
+username=$(cat ${builddir}/username)
 
 pacman -S ${packages} --noconfirm #code npm nodejs
 systemctl enable NetworkManager
 systemctl enable sshd
 systemctl enable sddm
 systemctl enable cups-browsed
-mkdir -p ${userbuilddir}
 cat >> /home/${username}/.bashrc << EOF
 export PS1="\[\e[31m\]\u\[\e[m\]@\h\[\e[34m\]\w\[\e[m\]\\$ "
 EOF
@@ -56,15 +54,15 @@ cat > /home/${username}/.config/autostart/script.desktop << EOF
 [Desktop Entry]
 Name=script
 GenericName=config script
-Exec=sh ${userbuilddir}/config.sh
+Exec=sh ${builddir}/config.sh
 Terminal=false
 Type=Application
 EOF
 chmod +x /home/${username}/.config/autostart/script.desktop
 
-#copy config files
-cp -r ${builddir}/* ${userbuilddir}/
-chmod +x ${userbuilddir}/*.sh
+# Permissions
+chmod +x ${builddir}/*.sh
+chown -R ${username}:users ${builddir}
 chown -R ${username}:users /home/${username}/
 
 # cat > /etc/xdg/kactivitymanagerd-statsrc << EOF
