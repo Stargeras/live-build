@@ -1,7 +1,7 @@
 #!/bin/bash
 
 builddir="/srv/build-files"
-username=$(cat ${builddir}username)
+username=$(cat ${builddir}/username)
 defaultresolution=$(cat ${builddir}/defaultresolution)
 packages="xdg-user-dirs sudo ssh vim curl bash-completion git debootstrap arch-install-scripts"
 
