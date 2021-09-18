@@ -1,7 +1,8 @@
 #!/bin/bash
 
-username=$(cat /root/build-files/username)
-defaultresolution=$(cat /root/build-files/defaultresolution)
+builddir="/srv/build-files"
+username=$(cat ${builddir}/username)
+defaultresolution=$(cat ${builddir}/defaultresolution)
 packages="base-devel git bash-completion \
 xorg-server xorg-apps xorg-xinit xdg-user-dirs \
 xf86-video-vesa xf86-video-vmware xf86-video-intel xf86-video-amdgpu xf86-video-nouveau"

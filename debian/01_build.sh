@@ -36,8 +36,8 @@ sudo lb bootstrap
 sudo lb chroot
 
 # COPY BUILD FILES TO CHROOT FILESYSTEM
-mkdir -p ${workspacedir}/chroot/${builddir}
-sudo cp -r ${workspacedir}/build-files/* ${workspacedir}/chroot/${builddir}/
+mkdir -p ${workspacedir}/chroot${builddir}
+sudo cp -r ${workspacedir}/build-files/* ${workspacedir}/chroot${builddir}/
 
 # RUN SCRIPTS
 #sudo arch-chroot ${workspacedir}/work/x86_64/airootfs chmod 777 /root/${scriptname}

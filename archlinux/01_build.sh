@@ -2,6 +2,7 @@
 
 username="admin"
 defaultresolution="1920 1080"
+builddir="/srv/build-files"
 serveoverhttp=true
 removeworkspaceafterbuild=true
 basedir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
@@ -29,7 +30,10 @@ sudo echo ${defaultresolution} > ${workspacedir}/build-files/defaultresolution
 # ARCHISO CONFIG
 sudo cp -r /usr/share/archiso/configs/releng/* ${workspacedir}/
 sudo sed -i "s:archisolabel=%ARCHISO_LABEL%:archisolabel=%ARCHISO_LABEL% cow_spacesize=50%:g" ${workspacedir}/syslinux/* ${workspacedir}/efiboot/loader/entries/*
-sudo cp -r ${workspacedir}/build-files ${workspacedir}/airootfs/root/
+
+# COPY BUILD FILES TO CHROOT FILESYSTEM
+mkdir -p ${workspacedir}/chroot${builddir}
+sudo cp -r ${workspacedir}/build-files/* ${workspacedir}/airootfs${builddir}/
 
 # INITIAL CREATE AND DELETE TO ALLOW REBUILD
 cd ${workspacedir}
@@ -38,10 +42,10 @@ sudo rm -f ${workspacedir}/work/base._prepare_airootfs_image ${workspacedir}/wor
 sudo rm -f ${workspacedir}/out/*
 
 # RUN SCRIPT
-sudo arch-chroot ${workspacedir}/work/x86_64/airootfs chmod 777 /root/build-files/base.sh
-sudo arch-chroot ${workspacedir}/work/x86_64/airootfs chmod 777 /root/build-files/${scriptname}
-sudo arch-chroot ${workspacedir}/work/x86_64/airootfs /bin/bash -c "/root/build-files/base.sh"
-sudo arch-chroot ${workspacedir}/work/x86_64/airootfs /bin/bash -c "/root/build-files/${scriptname}"
+sudo arch-chroot ${workspacedir}/work/x86_64/airootfs chmod 777 ${builddir}/base.sh
+sudo arch-chroot ${workspacedir}/work/x86_64/airootfs chmod 777 ${builddir}/${scriptname}
+sudo arch-chroot ${workspacedir}/work/x86_64/airootfs /bin/bash -c "${builddir}/base.sh"
+sudo arch-chroot ${workspacedir}/work/x86_64/airootfs /bin/bash -c "${builddir}/${scriptname}"
 
 # REBUILD
 cd ${workspacedir}
