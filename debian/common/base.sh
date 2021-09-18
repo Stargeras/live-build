@@ -1,16 +1,8 @@
 #!/bin/bash
 
 username=$(cat /root/username)
+defaultresolution=$(cat /root/build-files/defaultresolution)
 packages="xdg-user-dirs sudo ssh vim curl bash-completion git debootstrap arch-install-scripts"
-
-#cat >> /etc/apt/sources.list << EOF
-#private
-#deb [trusted=yes] http://23.82.1.13/deb/ buster main
-#vscode
-#deb [arch=amd64,arm64,armhf] http://packages.microsoft.com/repos/code stable main
-#google-chrome
-#deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main
-#EOF
 
 apt update
 apt install -y ${packages}
@@ -31,11 +23,12 @@ EOF
 echo debian-$(cat /etc/apt/sources.list | head -1 | awk '{print$3}') > /etc/hostname
 echo "color slate" >> /etc/vim/vimrc
 
+# SET DEFAULT RESOLUTION
 cat > /etc/X11/xorg.conf << EOF
 Section "Monitor"
     Identifier      "IntegratedDisplay0"
-    Modeline        "1920x1080_60.00"  173.00  1920 2048 2248 2576  1080 1083 1088 1120 -hsync +vsync
-    Option          "PreferredMode" "1920x1080_60.00"
+    Modeline        $(cvt ${defaultresolution} | grep Modeline | cut -f 2- -d ' ')
+    Option          "PreferredMode" $(cvt ${defaultresolution} | grep Modeline | awk '{print$2}')
 EndSection
 Section "Screen"
         Identifier "Screen0"
@@ -44,7 +37,7 @@ Section "Screen"
         SubSection "Display"
                 Viewport   0 0
                 Depth    24
-                Modes "1920x1080"
+                Modes $(cvt ${defaultresolution} | grep Modeline | awk '{print$2}')
         EndSubSection
 EndSection
 EOF

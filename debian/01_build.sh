@@ -1,5 +1,8 @@
 #!/bin/bash
 
+username="admin"
+defaultresolution="1920 1080"
+builddir="/srv/build-files"
 serveoverhttp=true
 removeworkspaceafterbuild=true
 basedir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
@@ -8,12 +11,11 @@ flavor=$2
 workspacedir="${basedir}/workspace"
 filesdir="${basedir}/${release}/${flavor}"
 scriptname="${flavor}.sh"
-username="admin"
 
 # Install archiso
 sudo apt install -y debootstrap arch-install-scripts live-build
 
-# COPY BUILD-FILES
+# PREPARE BUILD-FILES
 #sudo chown -R jenkins:users ${filesdir}
 if [[ ! -d ${workspacedir}/build-files ]]; then
         sudo mkdir -p ${workspacedir}/build-files
@@ -21,6 +23,7 @@ fi
 sudo cp ${filesdir}/* ${workspacedir}/build-files/
 sudo cp ${basedir}/common/* ${workspacedir}/build-files/
 sudo echo ${username} > ${workspacedir}/build-files/username
+sudo echo ${defaultresolution} > ${workspacedir}/build-files/defaultresolution
 
 # RUN STAGES
 cd ${workspacedir}
@@ -32,13 +35,15 @@ fi
 sudo lb bootstrap
 sudo lb chroot
 
-sudo cp ${workspacedir}/build-files/* ${workspacedir}/chroot/root/
+# COPY BUILD FILES TO CHROOT FILESYSTEM
+mkdir -p ${workspacedir}/chroot/${builddir}
+sudo cp -r ${workspacedir}/build-files/* ${workspacedir}/chroot/${builddir}/
 
-# RUN SCRIPT
+# RUN SCRIPTS
 #sudo arch-chroot ${workspacedir}/work/x86_64/airootfs chmod 777 /root/${scriptname}
 #sudo arch-chroot ${workspacedir}/chroot /bin/bash -c "su - -c /root/${scriptname}"
-sudo arch-chroot ${workspacedir}/chroot /bin/bash /root/base.sh
-sudo arch-chroot ${workspacedir}/chroot /bin/bash /root/${scriptname}
+sudo arch-chroot ${workspacedir}/chroot /bin/bash ${builddir}/base.sh
+sudo arch-chroot ${workspacedir}/chroot /bin/bash ${builddir}/${scriptname}
 
 # RUN FINAL STAGE
 sudo lb binary
