@@ -3,13 +3,16 @@ packages="plasma firefox chromium neofetch htop gparted print-manager \
         konsole dolphin gwenview ark kate qbittorrent celluloid \
         virt-viewer cups freerdp code ttf-droid"
 aurpackages="f5vpn cackey"
-username=$(cat /root/username)
+username=$(cat /root/build-files/username)
+builddir="/root/build-files"
+userbuilddir="/home/${username}/Documents/build-files"
 
 pacman -S ${packages} --noconfirm #code npm nodejs
 systemctl enable NetworkManager
 systemctl enable sshd
 systemctl enable sddm
 systemctl enable cups-browsed
+mkdir -p ${userbuilddir}
 cat >> /home/${username}/.bashrc << EOF
 export PS1="\[\e[31m\]\u\[\e[m\]@\h\[\e[34m\]\w\[\e[m\]\\$ "
 EOF
@@ -22,7 +25,7 @@ sed -i "s/CursorTheme=/CursorTheme=breeze_cursors/g" /etc/sddm.conf.d/default.co
 
 # AUR Pakages
 for package in ${aurpackages}; do
-  aurdir="\${HOME}/Documents/build"
+  aurdir="\${HOME}/Documents/aur"
   su ${username} -c "mkdir -p ${aurdir}"
   su ${username} -c "cd ${aurdir} && git clone https://aur.archlinux.org/${package}.git"
   su ${username} -c "cd ${aurdir}/${package}/ && makepkg -si --noconfirm"
@@ -53,15 +56,15 @@ cat > /home/${username}/.config/autostart/script.desktop << EOF
 [Desktop Entry]
 Name=script
 GenericName=config script
-Exec=sh /home/${username}/Documents/config.sh
+Exec=sh ${userbuilddir}/config.sh
 Terminal=false
 Type=Application
 EOF
 chmod +x /home/${username}/.config/autostart/script.desktop
 
 #copy config files
-cp /root/* /home/${username}/Documents/
-chmod +x /home/${username}/Documents/*.sh
+cp -r ${builddir}/* ${userbuilddir}/
+chmod +x ${userbuilddir}/*.sh
 chown -R ${username}:users /home/${username}/
 
 # cat > /etc/xdg/kactivitymanagerd-statsrc << EOF
