@@ -1,10 +1,11 @@
 #!/bin/bash
 
-packages="plasma-desktop sddm konsole dolphin kate firefox-esr chromium cackey\
- gparted celluloid flatpak cups neofetch gparted bash-completion sqlite\
- systemd-container network-manager-openvpn-gnome virt-viewer"
+packages="plasma-desktop sddm konsole dolphin kate firefox-esr chromium cackey \
+gparted celluloid flatpak cups neofetch gparted bash-completion sqlite \
+systemd-container network-manager-openvpn-gnome virt-viewer"
 httpdownloadurls="https://f5vpn.geneseo.edu/public/download/linux_f5vpn.x86_64.deb"
-username=$(cat /root/username)
+builddir="/srv/build-files"
+username=$(cat ${builddir}/username)
 
 apt update
 apt install -y ${packages}
@@ -23,7 +24,7 @@ cat > /home/${username}/.config/autostart/script.desktop << EOF
 [Desktop Entry]
 Name=script
 GenericName=config script
-Exec=sh /home/\${username}/Documents/config.sh
+Exec=sh ${builddir}/config.sh
 Terminal=false
 Type=Application
 EOF
@@ -46,7 +47,7 @@ pref("browser.tabs.drawInTitlebar", true);
 pref("browser.uiCustomization.state", "{\"placements\":{\"widget-overflow-fixed-list\":[],\"nav-bar\":[\"back-button\",\"forward-button\",\"stop-reload-button\",\"home-button\",\"urlbar-container\",\"downloads-button\",\"library-button\",\"sidebar-button\",\"fxa-toolbar-menu-button\"],\"toolbar-menubar\":[\"menubar-items\"],\"TabsToolbar\":[\"tabbrowser-tabs\",\"new-tab-button\",\"alltabs-button\"],\"PersonalToolbar\":[\"personal-bookmarks\"]},\"seen\":[\"developer-button\"],\"dirtyAreaCache\":[],\"currentVersion\":16,\"newElementCount\":2}");
 EOF
 
-#copy config files
-cp /root/* /home/${username}/Documents/
-chmod +x /home/${username}/Documents/*.sh
+# Permissions
+chmod +x ${builddir}/*.sh
+chown -R ${username}:users ${builddir}
 chown -R ${username}:users /home/${username}/
