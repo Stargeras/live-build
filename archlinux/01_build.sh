@@ -32,7 +32,7 @@ sudo cp -r /usr/share/archiso/configs/releng/* ${workspacedir}/
 sudo sed -i "s:archisolabel=%ARCHISO_LABEL%:archisolabel=%ARCHISO_LABEL% cow_spacesize=50%:g" ${workspacedir}/syslinux/* ${workspacedir}/efiboot/loader/entries/*
 
 # COPY BUILD FILES TO CHROOT FILESYSTEM
-mkdir -p ${workspacedir}/chroot${builddir}
+mkdir -p ${workspacedir}/airootfs${builddir}
 sudo cp -r ${workspacedir}/build-files/* ${workspacedir}/airootfs${builddir}/
 
 # INITIAL CREATE AND DELETE TO ALLOW REBUILD
