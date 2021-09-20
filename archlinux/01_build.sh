@@ -5,6 +5,7 @@ defaultresolution="1920 1080"
 builddir="/srv/build-files"
 serveoverhttp=true
 removeworkspaceafterbuild=true
+bootmenuadditions="cow_spacesize=50% vga=791"
 basedir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 flavor=$1
 workspacedir="${basedir}/workspace"
@@ -27,9 +28,11 @@ sudo cp ${basedir}/common/* ${workspacedir}/build-files/
 sudo echo ${username} > ${workspacedir}/build-files/username
 sudo echo ${defaultresolution} > ${workspacedir}/build-files/defaultresolution
 
-# ARCHISO CONFIG
+# COPY ARCHISO CONFIG
 sudo cp -r /usr/share/archiso/configs/releng/* ${workspacedir}/
-sudo sed -i "s:archisolabel=%ARCHISO_LABEL%:archisolabel=%ARCHISO_LABEL% cow_spacesize=50%:g" ${workspacedir}/syslinux/* ${workspacedir}/efiboot/loader/entries/*
+
+# ADD BOOT MENU ADDITIONS
+sudo sed -i "s:archisolabel=%ARCHISO_LABEL%:archisolabel=%ARCHISO_LABEL% ${bootmenuadditions}:g" ${workspacedir}/syslinux/* ${workspacedir}/efiboot/loader/entries/*
 
 # COPY BUILD FILES TO CHROOT FILESYSTEM
 mkdir -p ${workspacedir}/airootfs${builddir}

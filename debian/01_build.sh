@@ -5,6 +5,7 @@ defaultresolution="1920 1080"
 builddir="/srv/build-files"
 serveoverhttp=true
 removeworkspaceafterbuild=true
+bootmenuadditions="live-config.nocomponents boot=live quiet splash vga=791"
 basedir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 release=$1
 flavor=$2
@@ -28,9 +29,9 @@ sudo echo ${defaultresolution} > ${workspacedir}/build-files/defaultresolution
 # RUN STAGES
 cd ${workspacedir}
 if [[ ${release} == "bullseye"  || ${release} == "sid" ]]; then
-  sudo lb config --archive-areas "main contrib non-free" -d ${release} --bootappend-live "live-config.nocomponents boot=live quiet splash" --security false
+  sudo lb config --archive-areas "main contrib non-free" -d ${release} --bootappend-live "${bootmenuadditions}" --security false
 else
-  sudo lb config --archive-areas "main contrib non-free" -d ${release} --bootappend-live "live-config.nocomponents boot=live quiet splash"
+  sudo lb config --archive-areas "main contrib non-free" -d ${release} --bootappend-live "${bootmenuadditions}"
 fi
 sudo lb bootstrap
 sudo lb chroot
