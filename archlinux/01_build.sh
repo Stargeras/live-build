@@ -45,8 +45,8 @@ sudo rm -f ${workspacedir}/work/base._prepare_airootfs_image ${workspacedir}/wor
 sudo rm -f ${workspacedir}/out/*
 
 # RUN SCRIPT
-sudo arch-chroot ${workspacedir}/work/x86_64/airootfs chmod 777 ${builddir}/base.sh
-sudo arch-chroot ${workspacedir}/work/x86_64/airootfs chmod 777 ${builddir}/${scriptname}
+sudo arch-chroot ${workspacedir}/work/x86_64/airootfs chmod a+rx ${builddir}/base.sh
+sudo arch-chroot ${workspacedir}/work/x86_64/airootfs chmod a+rx ${builddir}/${scriptname}
 sudo arch-chroot ${workspacedir}/work/x86_64/airootfs /bin/bash -c "${builddir}/base.sh"
 sudo arch-chroot ${workspacedir}/work/x86_64/airootfs /bin/bash -c "${builddir}/${scriptname}"
 
