@@ -35,11 +35,11 @@ gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
 #gedit
 gsettings set org.gnome.gedit.preferences.editor display-line-numbers true
 #VNC
-dconf write /org/gnome/settings-daemon/plugins/sharing/vino-server/enabled-connections ["'"$(nmcli -t -f UUID connection show --active)"'"]
-gsettings set org.gnome.Vino authentication-methods ['vnc']
-gsettings set org.gnome.Vino prompt-enabled false
-gsettings set org.gnome.Vino vnc-password 'YWRtaW4='
-gsettings set org.gnome.Vino require-encryption false
+#dconf write /org/gnome/settings-daemon/plugins/sharing/vino-server/enabled-connections ["'"$(nmcli -t -f UUID connection show --active)"'"]
+#gsettings set org.gnome.Vino authentication-methods ['vnc']
+#gsettings set org.gnome.Vino prompt-enabled false
+#gsettings set org.gnome.Vino vnc-password 'YWRtaW4='
+#gsettings set org.gnome.Vino require-encryption false
 #VM resolution tool
 #if xrandr --listmonitors | grep Virtual; then gnome-terminal -- ~/Documents/restool.sh; fi
 #SSH fix
