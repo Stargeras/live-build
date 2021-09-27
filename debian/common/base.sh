@@ -3,6 +3,7 @@
 builddir="/srv/build-files"
 username=$(cat ${builddir}/username)
 defaultresolution=$(cat ${builddir}/defaultresolution)
+timezone=$(cat ${builddir}/localtime)
 packages="xserver-xorg-core xdg-user-dirs sudo ssh vim curl bash-completion git debootstrap arch-install-scripts"
 
 apt update
@@ -11,7 +12,11 @@ apt install -y ${packages}
 #apt update
 #apt upgrade -y
 systemctl disable unattended-upgrades
-ln -sf /usr/share/zoneinfo/America/New_York /etc/localtime
+
+# SET TIMEZONE
+ln -sf /usr/share/zoneinfo/${timezone} /etc/localtime
+
+# OTHER CUSTOMIZATIONS
 cat >> /etc/bash.bashrc << EOF
 alias ls='ls --color=auto'
 alias ram='ps axch -o cmd:15,%mem --sort=-%mem | head'
