@@ -5,6 +5,7 @@ defaultresolution="1920 1080"
 builddir="/srv/build-files"
 serveoverhttp=true
 removeworkspaceafterbuild=true
+localtime=$(timedatectl | grep "Time zone" |awk '{print $3}')
 bootmenuadditions="live-config.nocomponents boot=live quiet splash vga=791"
 basedir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 release=$1
@@ -25,6 +26,7 @@ sudo cp ${filesdir}/* ${workspacedir}/build-files/
 sudo cp ${basedir}/common/* ${workspacedir}/build-files/
 sudo echo ${username} > ${workspacedir}/build-files/username
 sudo echo ${defaultresolution} > ${workspacedir}/build-files/defaultresolution
+sudo echo ${localtime} > ${workspacedir}/build-files/localtime
 
 # RUN STAGES
 cd ${workspacedir}
