@@ -14,7 +14,7 @@ workspacedir="${basedir}/workspace"
 filesdir="${basedir}/${release}/${flavor}"
 scriptname="${flavor}.sh"
 
-# Install archiso
+# INSTALL PACKAGES
 sudo apt install -y debootstrap arch-install-scripts live-build
 
 # PREPARE BUILD-FILES
