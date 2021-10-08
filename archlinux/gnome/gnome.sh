@@ -14,7 +14,7 @@ systemctl enable cups-browsed
 
 # AUR Pakages
 for package in ${aurpackages}; do
-  aurdir="~/Documents/build"
+  aurdir="\${HOME}/Documents/aur"
   su ${username} -c "mkdir -p ${aurdir}"
   su ${username} -c "cd ${aurdir} && git clone https://aur.archlinux.org/${package}.git"
   su ${username} -c "cd ${aurdir}/${package}/ && makepkg -si --noconfirm"
