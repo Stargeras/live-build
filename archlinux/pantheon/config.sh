@@ -12,33 +12,19 @@ gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
 # Terminal font
 dconf write /org/gnome/desktop/interface/monospace-font-name "'Liberation Mono 11'"
 
-
 ###PLANK DOCK
 killall plank
-rm -f ${HOME}/.config/plank/dock1/launchers/*
-cat > ${HOME}/.config/plank/dock1/launchers/firefox.dockitem << FOE
+# App names are in /usr/share/applications without .desktop extension
+dockitems="firefox io.elementary.files io.elementary.terminal io.elementary.calendar io.elementary.code io.elementary.switchboard"
+dockpath="${HOME}/.config/plank/dock1/launchers"
+dconfstring=""
+rm -f ${dockpath}/*
+for item in ${dockitems}; do
+  cat > ${dockpath}/${item}.dockitem << FOE
 [PlankDockItemPreferences]
-Launcher=file:///usr/share/applications/firefox.desktop
+Launcher=file:///usr/share/applications/${item}.desktop
 FOE
-cat > ${HOME}/.config/plank/dock1/launchers/io.elementary.files.dockitem << FOE
-[PlankDockItemPreferences]
-Launcher=file:///usr/share/applications/io.elementary.files.desktop
-FOE
-cat > ${HOME}/.config/plank/dock1/launchers/io.elementary.terminal.dockitem << FOE
-[PlankDockItemPreferences]
-Launcher=file:///usr/share/applications/io.elementary.terminal.desktop
-FOE
-cat > ${HOME}/.config/plank/dock1/launchers/io.elementary.calendar.dockitem << FOE
-[PlankDockItemPreferences]
-Launcher=file:///usr/share/applications/io.elementary.calendar.desktop
-FOE
-cat > ${HOME}/.config/plank/dock1/launchers/io.elementary.code.dockitem << FOE
-[PlankDockItemPreferences]
-Launcher=file:///usr/share/applications/io.elementary.code.desktop
-FOE
-cat > ${HOME}/.config/plank/dock1/launchers/io.elementary.switchboard.dockitem << FOE
-[PlankDockItemPreferences]
-Launcher=file:///usr/share/applications/io.elementary.switchboard.desktop
-FOE
-dconf write /net/launchpad/plank/docks/dock1/dock-items "['firefox.dockitem', 'io.elementary.files.dockitem', 'io.elementary.terminal.dockitem', 'io.elementary.calendar.dockitem', 'io.elementary.code.dockitem', 'io.elementary.switchboard.dockitem']"
+  dconfstring+="'${item}.dockitem', "
+done 
+dconf write /net/launchpad/plank/docks/dock1/dock-items "[${dconfstring::-2}]"
 plank &
