@@ -41,6 +41,18 @@ pref("browser.tabs.drawInTitlebar", true);
 pref("browser.uiCustomization.state", "{\"placements\":{\"widget-overflow-fixed-list\":[],\"nav-bar\":[\"back-button\",\"forward-button\",\"stop-reload-button\",\"home-button\",\"urlbar-container\",\"downloads-button\",\"library-button\",\"sidebar-button\",\"fxa-toolbar-menu-button\"],\"toolbar-menubar\":[\"menubar-items\"],\"TabsToolbar\":[\"tabbrowser-tabs\",\"new-tab-button\",\"alltabs-button\"],\"PersonalToolbar\":[\"personal-bookmarks\"]},\"seen\":[\"developer-button\"],\"dirtyAreaCache\":[],\"currentVersion\":16,\"newElementCount\":2}");
 EOF
 
+mkdir -p /home/${username}/.config/autostart
+cat > /home/${username}/.config/autostart/script.desktop << EOF
+[Desktop Entry]
+Name=script
+GenericName=config script
+Exec=${builddir}/config.sh
+Terminal=false
+Type=Application
+X-GNOME-Autostart-enabled=true
+EOF
+chmod +x /home/${username}/.config/autostart/script.desktop
+
 ##Set XORG as default session
 cat > /var/lib/AccountsService/users/${username} << EOF
 [User]
