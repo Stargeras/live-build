@@ -45,7 +45,7 @@ EOF
 cat > /var/lib/AccountsService/users/${username} << EOF
 [User]
 Language=
-XSession=gnome-xorg
+XSession=pantheon
 EOF
 
 # Permissions
