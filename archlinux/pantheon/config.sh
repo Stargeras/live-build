@@ -2,8 +2,13 @@
 gsettings set org.gnome.desktop.interface gtk-theme  'io.elementary.stylesheet.banana'
 gsettings set org.gnome.desktop.interface icon-theme 'elementary'
 gsettings set org.gnome.desktop.interface cursor-theme 'elementary'
+gsettings set org.gnome.desktop.wm.preferences button-layout 'close:maximize'
 gsettings set org.pantheon.desktop.gala.animations enable-animations 'true'
 gsettings set org.gnome.desktop.background picture-uri 'file:///usr/share/backgrounds/odin.jpg'
+gsettings set org.gnome.desktop.interface clock-format 12h
+#dconf write /net/launchpad/plank/docks/dock1/hide-mode "'none'"
+gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
+
 # Terminal font
 dconf write /org/gnome/desktop/interface/monospace-font-name "'Liberation Mono 11'"
 
