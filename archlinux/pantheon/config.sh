@@ -13,7 +13,6 @@ gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
 dconf write /org/gnome/desktop/interface/monospace-font-name "'Liberation Mono 11'"
 
 ###PLANK DOCK
-killall plank
 # App names are in /usr/share/applications without .desktop extension
 dockitems="firefox chromium io.elementary.files io.elementary.terminal io.elementary.code io.elementary.switchboard"
 dockpath="${HOME}/.config/plank/dock1/launchers"
@@ -27,4 +26,5 @@ FOE
   dconfstring+="'${item}.dockitem', "
 done 
 dconf write /net/launchpad/plank/docks/dock1/dock-items "[${dconfstring::-2}]"
+killall plank
 nohup plank > /dev/null 2>&1 &
