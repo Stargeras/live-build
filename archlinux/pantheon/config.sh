@@ -27,4 +27,4 @@ FOE
   dconfstring+="'${item}.dockitem', "
 done 
 dconf write /net/launchpad/plank/docks/dock1/dock-items "[${dconfstring::-2}]"
-plank &
+nohup plank > /dev/null 2>&1 &
