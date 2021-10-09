@@ -1,6 +1,6 @@
 #!/bin/bash
 packages="pantheon sddm firefox chromium neofetch htop gparted celluloid \
-          virt-viewer freerdp code"
+          virt-viewer freerdp"
 aurpackages="f5vpn cackey"
 builddir="/srv/build-files"
 username=$(cat ${builddir}/username)
