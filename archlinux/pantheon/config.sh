@@ -15,7 +15,7 @@ dconf write /org/gnome/desktop/interface/monospace-font-name "'Liberation Mono 1
 ###PLANK DOCK
 killall plank
 # App names are in /usr/share/applications without .desktop extension
-dockitems="firefox io.elementary.files io.elementary.terminal io.elementary.calendar io.elementary.code io.elementary.switchboard"
+dockitems="firefox chromium io.elementary.files io.elementary.terminal io.elementary.code io.elementary.switchboard"
 dockpath="${HOME}/.config/plank/dock1/launchers"
 dconfstring=""
 rm -f ${dockpath}/*
