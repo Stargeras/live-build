@@ -1,5 +1,5 @@
 #!/bin/bash
-packages="pantheon firefox chromium neofetch htop gparted celluloid \
+packages="pantheon sddm firefox chromium neofetch htop gparted celluloid \
           virt-viewer freerdp code"
 aurpackages="f5vpn cackey"
 builddir="/srv/build-files"
@@ -8,6 +8,7 @@ username=$(cat ${builddir}/username)
 pacman -S ${packages} --noconfirm
 systemctl enable NetworkManager
 systemctl enable sshd
+systemctl enable sddm
 
 # AUR Pakages
 for package in ${aurpackages}; do
@@ -38,6 +39,13 @@ cat >> /usr/lib/firefox/browser/defaults/preferences/vendor.js << EOF
 pref("browser.tabs.drawInTitlebar", true);
 //pref("extensions.activeThemeID", "firefox-compact-dark@mozilla.org");
 pref("browser.uiCustomization.state", "{\"placements\":{\"widget-overflow-fixed-list\":[],\"nav-bar\":[\"back-button\",\"forward-button\",\"stop-reload-button\",\"home-button\",\"urlbar-container\",\"downloads-button\",\"library-button\",\"sidebar-button\",\"fxa-toolbar-menu-button\"],\"toolbar-menubar\":[\"menubar-items\"],\"TabsToolbar\":[\"tabbrowser-tabs\",\"new-tab-button\",\"alltabs-button\"],\"PersonalToolbar\":[\"personal-bookmarks\"]},\"seen\":[\"developer-button\"],\"dirtyAreaCache\":[],\"currentVersion\":16,\"newElementCount\":2}");
+EOF
+
+##Set XORG as default session
+cat > /var/lib/AccountsService/users/${username} << EOF
+[User]
+Language=
+XSession=gnome-xorg
 EOF
 
 # Permissions
