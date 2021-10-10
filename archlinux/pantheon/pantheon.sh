@@ -2,15 +2,22 @@
 packages="pantheon lightdm-gtk-greeter firefox chromium neofetch htop gparted celluloid \
           virt-viewer freerdp \
           inter-font ttf-opensans ttf-roboto ttf-roboto-mono ttf-droid"
-aurpackages="f5vpn cackey switchboard-plug-pantheon-tweaks-git"
+aurpackages="f5vpn cackey yay switchboard-plug-pantheon-tweaks-git"
 builddir="/srv/build-files"
 username=$(cat ${builddir}/username)
+installappcenter="true"
 disableonboarding="false"
 
 pacman -S ${packages} --noconfirm
 systemctl enable NetworkManager
 systemctl enable sshd
 systemctl enable lightdm
+
+# Appcenter
+if ${installappcenter}; then
+  rm -f /etc/io.elementary.appcenter.hiddenapps
+  aurpackages+=" appcenter"
+fi
 
 # AUR Pakages
 for package in ${aurpackages}; do
