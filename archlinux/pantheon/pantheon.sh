@@ -1,5 +1,5 @@
 #!/bin/bash
-packages="pantheon sddm firefox chromium neofetch htop gparted celluloid \
+packages="pantheon lightdm-gtk-greeter firefox chromium neofetch htop gparted celluloid \
           virt-viewer freerdp"
 aurpackages="f5vpn cackey"
 builddir="/srv/build-files"
@@ -9,7 +9,7 @@ disableonboarding="false"
 pacman -S ${packages} --noconfirm
 systemctl enable NetworkManager
 systemctl enable sshd
-systemctl enable sddm
+systemctl enable lightdm
 
 # AUR Pakages
 for package in ${aurpackages}; do
@@ -59,6 +59,15 @@ cat > /var/lib/AccountsService/users/${username} << EOF
 [User]
 Language=
 XSession=Pantheon
+EOF
+
+# Lightdm mods
+cat >> /etc/lightdm/lightdm.conf << EOF
+[Seat:*]
+greeter-session=lightdm-gtk-greeter
+EOF
+cat >> /etc/lightdm/lightdm-gtk-greeter.conf << EOF
+background=/usr/share/backgrounds/odin.jpg
 EOF
 
 # Disable first run setup dialog
