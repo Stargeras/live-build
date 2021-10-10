@@ -15,7 +15,7 @@ systemctl enable lightdm
 
 # Appcenter
 if ${installappcenter}; then
-  rm -f /etc/io.elementary.appcenter.hiddenapps
+  rm -f /etc/io.elementary.appcenter/appcenter.hiddenapps
   aurpackages+=" appcenter"
 fi
 
