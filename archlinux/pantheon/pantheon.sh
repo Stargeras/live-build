@@ -58,7 +58,8 @@ chmod +x /home/${username}/.config/autostart/script.desktop
 cat > /var/lib/AccountsService/users/${username} << EOF
 [User]
 Language=
-XSession=Pantheon
+Session=Pantheon
+XSession=pantheon
 EOF
 
 # Lightdm mods
