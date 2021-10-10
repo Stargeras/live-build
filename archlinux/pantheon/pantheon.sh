@@ -4,6 +4,7 @@ packages="pantheon sddm firefox chromium neofetch htop gparted celluloid \
 aurpackages="f5vpn cackey"
 builddir="/srv/build-files"
 username=$(cat ${builddir}/username)
+disableonboarding="false"
 
 pacman -S ${packages} --noconfirm
 systemctl enable NetworkManager
@@ -59,6 +60,11 @@ cat > /var/lib/AccountsService/users/${username} << EOF
 Language=
 XSession=Pantheon
 EOF
+
+# Disable first run setup dialog
+if ${disableonboarding}; then
+  mv /etc/xdg/autostart/io.elementary.onboarding.desktop /etc/xdg/autostart/io.elementary.onboarding.disabled
+fi
 
 # Permissions
 chmod +x ${builddir}/*.sh
