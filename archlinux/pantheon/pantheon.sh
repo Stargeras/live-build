@@ -20,6 +20,7 @@ for package in ${aurpackages}; do
   su ${username} -c "cd ${aurdir}/${package}/ && makepkg -si --noconfirm"
   su ${username} -c "sudo rm -rf ${aurdir}"
 done
+# Cleanup unneeded dependencies
 pacman -Rs $(pacman -Qtdq) --noconfirm
 
 cat >> /home/${username}/.bashrc << EOF
