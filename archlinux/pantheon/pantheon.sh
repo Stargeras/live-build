@@ -57,7 +57,7 @@ chmod +x /home/${username}/.config/autostart/script.desktop
 cat > /var/lib/AccountsService/users/${username} << EOF
 [User]
 Language=
-XSession=pantheon
+XSession=Pantheon
 EOF
 
 # Permissions
