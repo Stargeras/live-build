@@ -2,7 +2,7 @@
 packages="pantheon lightdm-gtk-greeter firefox chromium neofetch htop gparted celluloid \
           virt-viewer freerdp \
           inter-font ttf-opensans ttf-roboto ttf-roboto-mono ttf-droid"
-aurpackages="f5vpn cackey"
+aurpackages="f5vpn cackey switchboard-plug-pantheon-tweaks-git"
 builddir="/srv/build-files"
 username=$(cat ${builddir}/username)
 disableonboarding="false"
@@ -20,6 +20,7 @@ for package in ${aurpackages}; do
   su ${username} -c "cd ${aurdir}/${package}/ && makepkg -si --noconfirm"
   su ${username} -c "sudo rm -rf ${aurdir}"
 done
+pacman -Rs $(pacman -Qtdq) --noconfirm
 
 cat >> /home/${username}/.bashrc << EOF
 export PS1="\[\e[31m\]\u\[\e[m\]@\h\[\e[34m\]\w\[\e[m\]\\$ "
