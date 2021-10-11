@@ -10,6 +10,7 @@ gsettings set io.elementary.desktop.wingpanel.datetime clock-format '12h'
 gsettings set io.elementary.code.saved-state window-size '(1280, 810)'
 #gsettings set io.elementary.files.preferences window-size '(1280, 810)'
 #dconf write /net/launchpad/plank/docks/dock1/hide-mode "'none'"
+dconf write /net/launchpad/plank/docks/dock1/theme "'Gtk+'"
 gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
 # Terminal font
 dconf write /org/gnome/desktop/interface/monospace-font-name "'Liberation Mono 11'"
