@@ -45,8 +45,11 @@ cd ${workspacedir}
 sudo mkarchiso -v .
 
 # DELETE TO ALLOW REBUILD
-sudo rm -f ${workspacedir}/work/base._prepare_airootfs_image ${workspacedir}/work/base._mkairootfs_squashfs ${workspacedir}/work/build._build_buildmode_iso ${workspacedir}/work/iso._build_iso_image
-sudo rm -f ${workspacedir}/out/*
+sudo rm -f ${workspacedir}/work/base._prepare_airootfs_image \
+    ${workspacedir}/work/base._mkairootfs_squashfs \
+    ${workspacedir}/work/build._build_buildmode_iso \
+    ${workspacedir}/work/iso._build_iso_image \
+    ${workspacedir}/out/*
 
 # RUN SCRIPT
 sudo arch-chroot ${workspacedir}/work/x86_64/airootfs chmod a+rx ${builddir}/base.sh
