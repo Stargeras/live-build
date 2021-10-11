@@ -40,9 +40,11 @@ sudo sed -i "s:archisolabel=%ARCHISO_LABEL%:archisolabel=%ARCHISO_LABEL% ${bootm
 mkdir -p ${workspacedir}/airootfs${builddir}
 sudo cp -r ${workspacedir}/build-files/* ${workspacedir}/airootfs${builddir}/
 
-# INITIAL CREATE AND DELETE TO ALLOW REBUILD
+# INITIAL CREATE
 cd ${workspacedir}
 sudo mkarchiso -v .
+
+# DELETE TO ALLOW REBUILD
 sudo rm -f ${workspacedir}/work/base._prepare_airootfs_image ${workspacedir}/work/base._mkairootfs_squashfs ${workspacedir}/work/build._build_buildmode_iso ${workspacedir}/work/iso._build_iso_image
 sudo rm -f ${workspacedir}/out/*
 
