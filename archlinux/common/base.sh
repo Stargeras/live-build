@@ -29,6 +29,13 @@ reflector --verbose --country 'United States' --sort rate --save /etc/pacman.d/m
 pacman -Rsn clonezilla lftp nmap openconnect --noconfirm
 pacman -S ${packages} --noconfirm
 
+# ADD BASHRC CUSTOMIZATIONS
+cat >> /etc/bash.bashrc << EOF
+alias ls='ls --color=auto'
+alias ll='ls -l'
+export PS1="\[\e[31m\]\u\[\e[m\]@\h\[\e[34m\]\w\[\e[m\]\\$ "
+EOF
+
 # ADD KERNEL TO PACMAN EXCEPTION
 cat >> /etc/pacman.conf << EOF
 [options]
