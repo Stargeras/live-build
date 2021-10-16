@@ -32,10 +32,6 @@ done
 #su ${username} -c 'cd ~/Documents/build/gtk-theme-framework/ && sudo ./main.sh -io -t palenight -d /usr/share/themes/ -p /usr/share/icons/'
 #su ${username} -c 'cd ~/Documents/build/gtk-theme-framework/ && sudo ./main.sh -io -t gruvterial -d /usr/share/themes/ -p /usr/share/icons/'
 
-# su ${username} -c 'cat >> ~/.bashrc << EOF
-# export PS1="\[\e[31m\]\u\[\e[m\]@\h\[\e[34m\]\w\[\e[m\]\\$ "
-# EOF'
-
 mkdir -p /home/${username}/.config/autostart
 cat > /home/${username}/.config/autostart/script.desktop << EOF
 [Desktop Entry]
