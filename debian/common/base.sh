@@ -19,6 +19,7 @@ ln -sf /usr/share/zoneinfo/${timezone} /etc/localtime
 # OTHER CUSTOMIZATIONS
 cat >> /etc/bash.bashrc << EOF
 alias ls='ls --color=auto'
+alias ll='ls -l'
 alias ram='ps axch -o cmd:15,%mem --sort=-%mem | head'
 alias cpu='ps axch -o cmd:15,%cpu --sort=-%cpu | head'
 alias weather='curl wttr.in/21009+us'
