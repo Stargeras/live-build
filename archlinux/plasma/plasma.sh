@@ -11,10 +11,7 @@ systemctl enable NetworkManager
 systemctl enable sshd
 systemctl enable sddm
 systemctl enable cups-browsed
-cat >> /home/${username}/.bashrc << EOF
-export PS1="\[\e[31m\]\u\[\e[m\]@\h\[\e[34m\]\w\[\e[m\]\\$ "
-EOF
-chown ${username}:users /home/${username}/.bashrc
+
 #su ${username} -c 'echo "exec startplasma-x11" >> ~/.xinitrc'
 #sddm
 cp -r /usr/lib/sddm/sddm.conf.d /etc/
