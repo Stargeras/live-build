@@ -11,10 +11,6 @@ systemctl enable gdm
 systemctl enable sshd
 systemctl enable cups-browsed
 
-su admin -c 'cat >> ~/.bashrc << EOF
-export PS1="\[\e[31m\]\u\[\e[m\]@\h\[\e[34m\]\w\[\e[m\]\\$ "
-EOF'
-
 # AUR Pakages
 for package in ${aurpackages}; do
   aurdir="~/Documents/build"
