@@ -29,15 +29,6 @@ reflector --verbose --country 'United States' --sort rate --save /etc/pacman.d/m
 pacman -Rsn clonezilla lftp nmap openconnect --noconfirm
 pacman -S ${packages} --noconfirm
 
-# ADD BASHRC CUSTOMIZATIONS
-cat >> /etc/bash.bashrc << EOF
-alias ls='ls --color=auto'
-alias ll='ls -l'
-alias ram='ps axch -o cmd:15,%mem --sort=-%mem | head'
-alias cpu='ps axch -o cmd:15,%cpu --sort=-%cpu | head'
-export PS1="\[\e[31m\]\u\[\e[m\]@\h\[\e[34m\]\w\[\e[m\]\\$ "
-EOF
-
 # ADD KERNEL TO PACMAN EXCEPTION
 cat >> /etc/pacman.conf << EOF
 [options]
@@ -64,6 +55,24 @@ cp /etc/X11/xinit/xinitrc /home/${username}/.xinitrc
 sed -i "$ d" /home/${username}/.xinitrc
 chmod +x /home/${username}/.xinitrc
 chown ${username}:users /home/${username}/.xinitrc
+
+# ADD BASHRC CUSTOMIZATIONS
+cat >> /etc/bash.bashrc << EOF
+alias ls='ls --color=auto'
+alias ll='ls -l'
+alias ram='ps axch -o cmd:15,%mem --sort=-%mem | head'
+alias cpu='ps axch -o cmd:15,%cpu --sort=-%cpu | head'
+export PS1="\[\e[31m\]\u\[\e[m\]@\h\[\e[34m\]\w\[\e[m\]\\$ "
+EOF
+
+cat >> /home/${username}/.bashrc << EOF
+alias ls='ls --color=auto'
+alias ll='ls -l'
+alias ram='ps axch -o cmd:15,%mem --sort=-%mem | head'
+alias cpu='ps axch -o cmd:15,%cpu --sort=-%cpu | head'
+export PS1="\[\e[31m\]\u\[\e[m\]@\h\[\e[34m\]\w\[\e[m\]\\$ "
+EOF
+chown ${username}:users /home/${username}/.bashrc
 
 # SET DEFAULT RESOLUTION
 cat > /etc/X11/xorg.conf << EOF
