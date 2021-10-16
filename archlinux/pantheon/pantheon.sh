@@ -30,10 +30,6 @@ done
 # Cleanup unneeded dependencies
 pacman -Rs $(pacman -Qtdq) --noconfirm
 
-cat >> /home/${username}/.bashrc << EOF
-export PS1="\[\e[31m\]\u\[\e[m\]@\h\[\e[34m\]\w\[\e[m\]\\$ "
-EOF
-
 cat >> /home/${username}/.xinitrc << EOF
 io.elementary.wingpanel &
 plank &
