@@ -58,9 +58,10 @@ sudo mv ${workspacedir}/live-image-amd64.hybrid.iso debian-${release}-${flavor}-
 # SERVE OVER HTTP
 if ${serveoverhttp}; then
   package="apache2"
-  if ! apt list --installed ${package} > /dev/null 2>&1; then
-    sudo apt install -y ${package}
-  fi
+  #if ! apt list --installed ${package} > /dev/null 2>&1; then
+   # sudo apt install -y ${package}
+  #fi
+  sudo apt install apache2 -y
   sudo mkdir -p /var/www/html/releases
   sudo systemctl start apache2
   sudo mv ${workspacedir}/*.iso /var/www/html/releases/
