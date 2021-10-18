@@ -15,6 +15,10 @@ gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
 # Terminal font
 dconf write /org/gnome/desktop/interface/monospace-font-name "'Liberation Mono 11'"
 
+# Desktop zoom
+# gsettings set org.gnome.desktop.interface text-scaling-factor '1.25'
+# gsettings set org.gnome.desktop.interface text-scaling-factor '1.50'
+
 ### PLANK DOCK
 # App names are in /usr/share/applications without .desktop extension
 dockitems="firefox chromium io.elementary.files io.elementary.terminal io.elementary.code io.elementary.switchboard"
