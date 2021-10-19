@@ -1,6 +1,6 @@
 #!/bin/bash
 packages="pantheon lightdm-gtk-greeter firefox chromium neofetch htop gparted celluloid \
-          virt-viewer freerdp \
+          virt-viewer freerdp imwheel \
           inter-font ttf-opensans ttf-roboto ttf-roboto-mono ttf-droid"
 aurpackages="f5vpn cackey yay switchboard-plug-pantheon-tweaks-git"
 builddir="/srv/build-files"

@@ -19,6 +19,18 @@ dconf write /org/gnome/desktop/interface/monospace-font-name "'Liberation Mono 1
 # gsettings set org.gnome.desktop.interface text-scaling-factor '1.25'
 # gsettings set org.gnome.desktop.interface text-scaling-factor '1.50'
 
+# imwheel config
+cat > ${HOME}/.imwheelrc << EOF
+".*"
+None,      Up,   Button4, 3
+None,      Down, Button5, 3
+Control_L, Up,   Control_L|Button4
+Control_L, Down, Control_L|Button5
+Shift_L,   Up,   Shift_L|Button4
+Shift_L,   Down, Shift_L|Button5
+EOF
+imwheel -kill
+
 ### PLANK DOCK
 # App names are in /usr/share/applications without .desktop extension
 dockitems="firefox chromium io.elementary.files io.elementary.terminal io.elementary.code io.elementary.switchboard"
