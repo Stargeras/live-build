@@ -1,5 +1,5 @@
 #!/bin/bash
-packages="pacman -S xfce4 xfce4-goodies papirus-icon-theme materia-gtk-theme firefox chromium neofetch sddm \
+packages="xfce4 xfce4-goodies papirus-icon-theme materia-gtk-theme firefox chromium neofetch sddm \
           pulseaudio gparted htop networkmanager network-manager-applet galculator celluloid cups \
           virt-viewer freerdp imwheel \
           inter-font ttf-opensans ttf-roboto ttf-roboto-mono ttf-droid"
