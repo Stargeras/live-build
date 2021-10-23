@@ -1,10 +1,11 @@
 #!/bin/bash
 packages="plasma firefox chromium neofetch htop gparted print-manager \
-        konsole dolphin gwenview ark kate qbittorrent celluloid \
+        konsole dolphin gwenview ark kate qbittorrent celluloid imwheel \
         virt-viewer cups freerdp code ttf-droid"
 aurpackages="f5vpn cackey"
 builddir="/srv/build-files"
 username=$(cat ${builddir}/username)
+usechromiummods="true"
 
 pacman -S ${packages} --noconfirm #code npm nodejs
 systemctl enable NetworkManager
@@ -56,6 +57,12 @@ Terminal=false
 Type=Application
 EOF
 chmod +x /home/${username}/.config/autostart/script.desktop
+
+# Run Chromium customizations
+if ${usechromiummods}; then
+  bash ${builddir}/chromium_custom.sh
+  sed -i 's/"use_system": true/"use_system": false/g' ${builddir}/chromium_custom.sh
+fi
 
 # Permissions
 chmod +x ${builddir}/*.sh
