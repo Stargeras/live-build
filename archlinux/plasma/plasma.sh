@@ -62,8 +62,8 @@ chmod +x /home/${username}/.config/autostart/script.desktop
 
 # Run Chromium customizations
 if ${usechromiummods}; then
+  #sed -i 's/"use_system": true/"use_system": false/g' ${builddir}/chromium_custom.sh
   bash ${builddir}/chromium_custom.sh
-  sed -i 's/"use_system": true/"use_system": false/g' ${builddir}/chromium_custom.sh
 fi
 
 # Permissions
