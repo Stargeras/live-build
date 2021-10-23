@@ -2,7 +2,7 @@
 packages="plasma firefox chromium neofetch htop gparted print-manager \
         konsole dolphin gwenview ark kate qbittorrent celluloid imwheel \
         virt-viewer cups freerdp code ttf-droid"
-aurpackages="f5vpn cackey"
+aurpackages="f5vpn cackey yay"
 builddir="/srv/build-files"
 username=$(cat ${builddir}/username)
 usechromiummods="true"
@@ -27,6 +27,8 @@ for package in ${aurpackages}; do
   su ${username} -c "cd ${aurdir}/${package}/ && makepkg -si --noconfirm"
   su ${username} -c "sudo rm -rf ${aurdir}"
 done
+# Cleanup unneeded dependencies
+pacman -Rs $(pacman -Qtdq) --noconfirm
 
 #Firefox
 cat >> /usr/lib/firefox/browser/defaults/preferences/vendor.js << EOF
