@@ -7,6 +7,7 @@ builddir="/srv/build-files"
 username=$(cat ${builddir}/username)
 installappcenter="true"
 disableonboarding="false"
+usechromiummods="true"
 
 pacman -S ${packages} --noconfirm
 systemctl enable NetworkManager
@@ -80,6 +81,11 @@ EOF
 # Disable first run setup dialog
 if ${disableonboarding}; then
   mv /etc/xdg/autostart/io.elementary.onboarding.desktop /etc/xdg/autostart/io.elementary.onboarding.disabled
+fi
+
+# Run Chromium customizations
+if ${usechromiummods}; then
+  bash ${builddir}/chromium_custom.sh
 fi
 
 # Permissions
