@@ -1,4 +1,4 @@
-gsettings set org.cinnamon.desktop.background picture-uri 'file:///usr/share/backgrounds/archlinux/mountain.png'
+gsettings set org.cinnamon.desktop.background picture-uri 'file:///usr/share/backgrounds/archlinux/mountain.jpg'
 gsettings set org.cinnamon favorite-apps "['chromium.desktop', 'firefox.desktop', 'code-oss.desktop', 'nemo.desktop', 'org.gnome.Terminal.desktop', 'cinnamon-settings.desktop']"
 gsettings set org.nemo.window-state geometry '1175x684+376+115'
 gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
