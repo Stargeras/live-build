@@ -1,6 +1,6 @@
 #!/bin/bash
 packages="cinnamon nemo-fileroller lightdm lightdm-gtk-greeter firefox chromium neofetch htop gparted celluloid gnome-terminal gedit \
-          virt-viewer freerdp imwheel cups vim curl gnome-screenshot eog breeze-icons breeze noto-fonts code \
+          virt-viewer freerdp imwheel cups vim curl gnome-screenshot eog breeze-icons breeze noto-fonts code archlinux-wallpaper \
           inter-font ttf-opensans ttf-roboto ttf-roboto-mono ttf-droid"
 aurpackages="f5vpn cackey yay orchis-theme-git tela-circle-icon-theme-git"
 builddir="/srv/build-files"
@@ -48,7 +48,7 @@ cat >> /etc/lightdm/lightdm.conf << EOF
 greeter-session=lightdm-gtk-greeter
 EOF
 cat >> /etc/lightdm/lightdm-gtk-greeter.conf << EOF
-background=/usr/share/backgrounds/orchis/1080p.jpg
+background=/usr/share/backgrounds/archlinux/gritty.png
 EOF
 
 # Run Chromium customizations
