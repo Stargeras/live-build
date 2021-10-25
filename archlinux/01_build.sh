@@ -14,6 +14,7 @@ filesdir="${basedir}/${flavor}"
 scriptname="${flavor}.sh"
 
 # INSTALL ARCHISO
+pacman -Sy
 package="archiso"
 if ! pacman -Q ${package} > /dev/null 2>&1; then
   sudo pacman -S ${package} --noconfirm
