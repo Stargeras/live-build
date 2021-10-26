@@ -1,4 +1,4 @@
-lookandfeeltool -a org.kde.breezedark.desktop
+#lookandfeeltool -a org.kde.breezedark.desktop
 #sed -i "s#ordering=#ordering=preferred://browser,applications:systemsettings.desktop,applications:org.kde.dolphin.desktop,applications:org.kde.kate.desktop,applications:org.kde.discover.desktop,applications:org.kde.konsole.desktop#g" ~/.config/kactivitymanagerd-statsrc
 
 #default browser
