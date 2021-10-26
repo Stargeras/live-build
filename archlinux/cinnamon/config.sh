@@ -21,7 +21,7 @@ gsettings set org.cinnamon.desktop.wm.preferences theme 'Orchis-light'
 gsettings set org.cinnamon.desktop.interface icon-theme 'Tela-circle'
 gsettings set org.cinnamon.desktop.interface gtk-theme 'Orchis-light'
 gsettings set org.cinnamon.theme name 'Orchis-light'
-gsettings set org.cinnamon.desktop.interface cursor-theme 'breeze_cursors'
+gsettings set org.cinnamon.desktop.interface cursor-theme 'Breeze_Hacked'
 gsettings set org.gnome.gedit.preferences.editor scheme 'oblivion'
 gsettings set org.gnome.Terminal.Legacy.Settings theme-variant dark
 
