@@ -1,9 +1,24 @@
+#!/bin/bash
+
+# Favorites and panel
+favorites="chromium.desktop firefox.desktop code-oss.desktop org.gnome.gedit.desktop nemo.desktop org.gnome.Terminal.desktop cinnamon-settings.desktop"
+panel="chromium.desktop nemo.desktop org.gnome.Terminal.desktop"
+panelfile="${HOME}/.cinnamon/configs/grouped-window-list@cinnamon.org/2.json"
+# DCONF
+dconfstring=""; for item in ${favorites}; do dconfstring+="'${item}', "; done
+gsettings set org.cinnamon favorite-apps "[${dconfstring::-2}]"
+# Panel
+array=""; for item in ${panel}; do array+="\"${item}\", "; done; array="${array::-2}"
+return=$(jq ".\"pinned-apps\".value = [${array}]" ${panelfile})
+echo ${return} | jq > ${panelfile}
+#jq '."pinned-apps".value[."pinned-apps".value| length] += "firefox.desktop"' ${panelfile}
+
 gsettings set org.cinnamon.desktop.background picture-uri 'file:///usr/share/backgrounds/archlinux/mountain.jpg'
-gsettings set org.cinnamon favorite-apps "['chromium.desktop', 'firefox.desktop', 'code-oss.desktop', 'org.gnome.gedit.desktop', 'nemo.desktop', 'org.gnome.Terminal.desktop', 'cinnamon-settings.desktop']"
 gsettings set org.nemo.window-state geometry '1175x684+376+115'
 gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
 gsettings set org.cinnamon.desktop.interface clock-use-24h false
 gsettings set org.cinnamon.desktop.interface clock-show-date true
+#/usr/share/cinnamon/applets/grouped-window-list@cinnamon.org
 
 # Terminal
 gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/ default-size-rows 35
