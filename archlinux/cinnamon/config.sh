@@ -15,7 +15,6 @@ while [[ "${check}" != "$(echo [${array}] | tr -d '[:space:]')" ]]; do
   echo ${return} | jq > ${panelfile}
   check=$(cat ${panelfile} | jq '."pinned-apps".value' -c)
 done
-
 #jq '."pinned-apps".value[."pinned-apps".value| length] += "firefox.desktop"' ${panelfile}
 
 gsettings set org.cinnamon.desktop.background picture-uri 'file:///usr/share/backgrounds/archlinux/mountain.jpg'
