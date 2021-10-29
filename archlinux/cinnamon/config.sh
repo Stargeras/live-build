@@ -57,6 +57,18 @@ gsettings set org.cinnamon.desktop.interface font-name 'Roboto 10'
 gsettings set org.gnome.desktop.interface document-font-name 'Roboto 11'
 dconf write /org/gnome/desktop/interface/monospace-font-name "'Liberation Mono 11'"
 
+# imwheel config
+cat > ${HOME}/.imwheelrc << EOF
+".*"
+None,      Up,   Button4, 3
+None,      Down, Button5, 3
+Control_L, Up,   Control_L|Button4
+Control_L, Down, Control_L|Button5
+Shift_L,   Up,   Shift_L|Button4
+Shift_L,   Down, Shift_L|Button5
+EOF
+imwheel -kill
+
 # Default fonts
 #gsettings set org.cinnamon.desktop.wm.preferences titlebar-font 'Sans Bold 10'
 #gsettings set org.nemo.desktop font 'Noto Sans 10'
