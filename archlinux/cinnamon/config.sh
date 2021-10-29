@@ -9,8 +9,13 @@ dconfstring=""; for item in ${favorites}; do dconfstring+="'${item}', "; done
 gsettings set org.cinnamon favorite-apps "[${dconfstring::-2}]"
 # Panel
 array=""; for item in ${panel}; do array+="\"${item}\", "; done; array="${array::-2}"
-return=$(jq ".\"pinned-apps\".value = [${array}]" ${panelfile})
-echo ${return} | jq > ${panelfile}
+check=$(cat ${panelfile} | jq '."pinned-apps".value' -c)
+while [[ "${check}" != "$(echo [${array}] | tr -d '[:space:]')" ]]; do
+  return=$(jq ".\"pinned-apps\".value = [${array}]" ${panelfile})
+  echo ${return} | jq > ${panelfile}
+  check=$(cat ${panelfile} | jq '."pinned-apps".value' -c)
+done
+
 #jq '."pinned-apps".value[."pinned-apps".value| length] += "firefox.desktop"' ${panelfile}
 
 gsettings set org.cinnamon.desktop.background picture-uri 'file:///usr/share/backgrounds/archlinux/mountain.jpg'
