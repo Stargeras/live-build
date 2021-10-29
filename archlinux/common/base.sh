@@ -73,7 +73,14 @@ alias cpu='ps axch -o cmd:15,%cpu --sort=-%cpu | head'
 export PS1="\[\e[31m\]\u\[\e[m\]@\h\[\e[34m\]\w\[\e[m\]\\$ "
 EOF
 chown ${username}:users /home/${username}/.bashrc
-echo "color slate" >> /etc/vimrc
+
+# VIM CUSTOMIZATIONS
+cat > /home/${username}/.vimrc << EOF
+syntax on
+colorscheme slate
+set mouse=v
+EOF
+chown ${username}:users /home/${username}/.vimrc
 
 # SET DEFAULT RESOLUTION
 cat > /etc/X11/xorg.conf << EOF
