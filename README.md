@@ -11,8 +11,14 @@
 - The supported desktop environments are also listed below
 - See the 01_build.sh scripts for variables to tweak
 - The "common" directory within each OS directory contain files and scripts that will be placed onto the target image regardless of the DE being installed
+
+### Modifying the install
 - Within each desktop environment directory, there is a bash script with the same name as the DE. This runs in chroot at build time and can be modified to run additional commands or add/remove packages
-- Most DE folders also include a "config.sh" script, this runs each time the new system logs in and can be modified to add additional tweaks or lock down certain settings. In the future, I plan on adding more comments for further clarity on what the commands are doing though most are fairly self explanitory and achieve things like enabling extensions, modifying the theme, modifying programs on the panel, etc.
+
+### Modifying DE settings
+- Things like enabling extensions, modifying the theme, modifying programs on the panel, etc cannot be done in a chroot environment.
+- To achieve this, most DE folders also include a "config.sh" script which runs each time the new system logs in and can be modified to add additional tweaks or lock down certain settings
+- In the future, I plan on adding more comments for further clarity on what the commands are doing though most are fairly self explanitory
 
 ### Arch Linux
 ```
