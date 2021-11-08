@@ -9,8 +9,9 @@ gsettings set org.gnome.desktop.interface enable-animations false
 #gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
 gsettings set org.gnome.gedit.preferences.editor scheme 'oblivion'
 gsettings set org.gnome.Terminal.Legacy.Settings theme-variant dark
-#Nautilus size
+#Nautilus
 gsettings set org.gnome.nautilus.window-state initial-size '(1050, 560)'
+gsettings set org.gnome.nautilus.icon-view default-zoom-level 'small'
 #Terminal size
 gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/ default-size-rows 30
 gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/ default-size-columns 122
