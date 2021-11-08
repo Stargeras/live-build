@@ -1,7 +1,7 @@
 #!/bin/bash
 
 packages="gnome firefox-esr gnome-shell-extension-dash-to-panel \
-gparted vlc  flatpak cups systemd-container \
+gparted vlc  flatpak cups systemd-container imwheel \
 materia-gtk-theme papirus-icon-theme  neofetch \
 network-manager-openvpn-gnome virt-viewer freerdp2-x11 \
 gnome-games-"
