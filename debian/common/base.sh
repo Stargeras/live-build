@@ -28,7 +28,13 @@ alias ytdm='youtube-dl --extract-audio --audio-format mp3'
 alias ytdv='youtube-dl -f bestvideo+bestaudio'
 EOF
 echo debian-$(cat /etc/apt/sources.list | head -1 | awk '{print$3}') > /etc/hostname
-echo "color slate" >> /etc/vim/vimrc
+# VIM CUSTOMIZATIONS
+cat > /home/${username}/.vimrc << EOF
+syntax on
+colorscheme slate
+set mouse=v
+EOF
+chown ${username}:users /home/${username}/.vimrc
 
 # SET DEFAULT RESOLUTION
 cat > /etc/X11/xorg.conf << EOF

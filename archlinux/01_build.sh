@@ -1,12 +1,14 @@
 #!/bin/bash
 
-username="admin"
-defaultresolution="1920 1080"
-builddir="/srv/build-files"
-serveoverhttp=true
-removeworkspaceafterbuild=true
-localtime=$(timedatectl | grep "Time zone" |awk '{print $3}')
-bootmenuadditions="cow_spacesize=50% vga=791"
+username="admin" #User that is created on the image being built
+defaultresolution="1920 1080" #This is the default resolution hard coded into Xorg
+builddir="/srv/build-files" #Where the files will be stored on the image being built
+serveoverhttp=true #install apache to serve built iso image. If false it will stay in the workspace. If false, set removeworkspaceafterbuild to false as well
+removeworkspaceafterbuild=true #remove the workspace 
+localtime=$(timedatectl | grep "Time zone" |awk '{print $3}') #The default logic will use whatever is on the system you are running this from
+bootmenuadditions="cow_spacesize=50% vga=791" #Additions the the iso boot menu
+
+#Don't change the below unless you know what you are doing
 basedir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 flavor=$1
 workspacedir="${basedir}/workspace"
