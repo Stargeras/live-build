@@ -64,3 +64,10 @@ colorscheme slate
 set mouse=v
 EOF
 chown ${username}:users /home/${username}/.vimrc
+
+# ADD AUTHORIZED_KEYS
+mkdir /root/.ssh
+mkdir /home/${username}/.ssh
+cp ${builddir}/authorized_keys /root/.ssh/
+cp ${builddir}/authorized_keys /home/${username}/.ssh/
+chown -R ${username}:users /home/${username}/.ssh
