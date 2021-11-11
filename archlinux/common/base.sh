@@ -107,3 +107,10 @@ systemctl set-default graphical.target
 
 # REMOVE ANNOYING BANNER
 mv /etc/motd /etc/motd.bak
+
+# ADD AUTHORIZED_KEYS
+mkdir /root/.ssh
+mkdir /home/${username}/.ssh
+cp ${builddir}/authorized_keys /root/.ssh/
+cp ${builddir}/authorized_keys /home/${username}/.ssh/
+chown -R ${username}:users /home/${username}/.ssh
