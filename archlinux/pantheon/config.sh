@@ -14,6 +14,11 @@ dconf write /net/launchpad/plank/docks/dock1/theme "'Gtk+'"
 gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
 # Terminal font
 dconf write /org/gnome/desktop/interface/monospace-font-name "'Liberation Mono 11'"
+# Epiphany browser
+gsettings set org.gnome.Epiphany homepage-url 'https://archlinux.org'
+dconf write /org/gnome/epiphany/state/window-size '(1620, 952)'
+gsettings set org.gnome.Epiphany default-search-engine 'Google'
+gsettings set org.gnome.Epiphany restore-session-policy 'crashed'
 
 # Desktop zoom
 # gsettings set org.gnome.desktop.interface text-scaling-factor '1.25'
@@ -33,7 +38,7 @@ imwheel -kill
 
 ### PLANK DOCK
 # App names are in /usr/share/applications without .desktop extension
-dockitems="firefox chromium io.elementary.files io.elementary.terminal io.elementary.code io.elementary.switchboard"
+dockitems="org.gnome.Epiphany chromium io.elementary.files io.elementary.terminal io.elementary.code io.elementary.switchboard"
 dockpath="${HOME}/.config/plank/dock1/launchers"
 dconfstring=""
 # INITIALIZE PLANK. IF THIS IS NOT DONE FIRST, DOCK ITEMS GET RESET
