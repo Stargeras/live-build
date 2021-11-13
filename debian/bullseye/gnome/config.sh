@@ -54,8 +54,14 @@ gsettings set org.gnome.desktop.interface clock-format 12h
 gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-type 'nothing'
 #touchpad
 gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
-#VM resolution tool
-#if xrandr --listmonitors | grep Virtual; then gnome-terminal -- ~/Documents/restool.sh; fi
-#SSH fix
-#sudo sed -i "s/PasswordAuthentication no/PasswordAuthentication yes/g" /etc/ssh/sshd_config
-#sudo systemctl restart sshd
+# imwheel config
+cat > ${HOME}/.imwheelrc << EOF
+".*"
+None,      Up,   Button4, 3
+None,      Down, Button5, 3
+Control_L, Up,   Control_L|Button4
+Control_L, Down, Control_L|Button5
+Shift_L,   Up,   Shift_L|Button4
+Shift_L,   Down, Shift_L|Button5
+EOF
+imwheel -kill
