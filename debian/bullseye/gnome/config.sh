@@ -2,23 +2,24 @@ gsettings set org.gnome.desktop.wm.preferences button-layout "appmenu:minimize,m
 gsettings set org.gnome.desktop.interface enable-animations false
 #gsettings set org.gnome.desktop.background picture-uri 'file:///usr/share/desktop-base/joy-inksplat-theme/wallpaper/gnome-background.xml'
 gsettings set org.gnome.desktop.background picture-uri 'file:///usr/share/backgrounds/gnome/adwaita-timed.xml'
-#gsettings set org.gnome.desktop.interface gtk-theme 'Yaru-dark'
-#gsettings set org.gnome.desktop.interface icon-theme 'Yaru'
-#gsettings set org.gnome.desktop.interface cursor-theme 'Yaru'
-#DARK THEME
-#gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
 # GEDIT
 gsettings set org.gnome.gedit.preferences.editor scheme 'oblivion'
-gsettings set org.gnome.Terminal.Legacy.Settings theme-variant dark
 gsettings set org.gnome.gedit.preferences.editor display-line-numbers true
-#Nautilus size
-gsettings set org.gnome.nautilus.window-state initial-size '(1050, 560)'
-#Terminal size
-gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/ default-size-rows 27
-gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/ default-size-columns 122
+#Nautilus
+gsettings set org.gnome.nautilus.window-state initial-size '(1119, 604)'
+gsettings set org.gnome.nautilus.icon-view default-zoom-level 'small'
+#Terminal
+gsettings set org.gnome.Terminal.Legacy.Settings theme-variant dark
+dconf write /org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/bold-is-bright 'true'
+gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/ default-size-rows 33
+gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/ default-size-columns 123
+# Epiphany browser
+dconf write /org/gnome/epiphany/state/window-size '(1600, 900)'
+gsettings set org.gnome.Epiphany default-search-engine 'Google'
+gsettings set org.gnome.Epiphany restore-session-policy 'crashed'
 #Extensions
 #Dash-to-panel
-gsettings set org.gnome.shell favorite-apps "['firefox-esr.desktop', 'nautilus.desktop', 'gnome-terminal.desktop']"
+gsettings set org.gnome.shell favorite-apps "['epiphany.desktop', 'nautilus.desktop', 'gnome-terminal.desktop']"
 gsettings set org.gnome.shell enabled-extensions "['dash-to-panel@jderose9.github.com']"
 gsettings --schemadir /usr/share/gnome-shell/extensions/dash-to-panel@jderose9.github.com/schemas/ list-recursively org.gnome.shell.extensions.dash-to-panel
 gsettings --schemadir /usr/share/gnome-shell/extensions/dash-to-panel@jderose9.github.com/schemas/ set org.gnome.shell.extensions.dash-to-panel panel-size 40
