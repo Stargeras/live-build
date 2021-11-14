@@ -1,11 +1,12 @@
 #!/bin/bash
 
 packages="plasma-desktop sddm konsole dolphin kate firefox-esr chromium cackey \
-gparted celluloid flatpak cups neofetch gparted bash-completion sqlite \
-systemd-container network-manager-openvpn-gnome virt-viewer"
+gparted celluloid flatpak cups neofetch gparted bash-completion sqlite imwheel \
+systemd-container network-manager-openvpn-gnome virt-viewer freerdp2-x11"
 httpdownloadurls="https://f5vpn.geneseo.edu/public/download/linux_f5vpn.x86_64.deb"
 builddir="/srv/build-files"
 username=$(cat ${builddir}/username)
+usechromiummods="true"
 
 apt update
 apt install -y ${packages}
@@ -46,6 +47,12 @@ cat >> /etc/firefox-esr/firefox-esr.js << EOF
 pref("browser.tabs.drawInTitlebar", true);
 pref("browser.uiCustomization.state", "{\"placements\":{\"widget-overflow-fixed-list\":[],\"nav-bar\":[\"back-button\",\"forward-button\",\"stop-reload-button\",\"home-button\",\"urlbar-container\",\"downloads-button\",\"library-button\",\"sidebar-button\",\"fxa-toolbar-menu-button\"],\"toolbar-menubar\":[\"menubar-items\"],\"TabsToolbar\":[\"tabbrowser-tabs\",\"new-tab-button\",\"alltabs-button\"],\"PersonalToolbar\":[\"personal-bookmarks\"]},\"seen\":[\"developer-button\"],\"dirtyAreaCache\":[],\"currentVersion\":16,\"newElementCount\":2}");
 EOF
+
+# Run Chromium customizations
+if ${usechromiummods}; then
+  #sed -i 's/"use_system": true/"use_system": false/g' ${builddir}/chromium_custom.sh
+  bash ${builddir}/chromium_custom.sh
+fi
 
 # Permissions
 chmod +x ${builddir}/*.sh
