@@ -1,6 +1,6 @@
 #!/bin/bash
 
-packages="gnome firefox-esr epiphany-browser gnome-shell-extension-dash-to-panel \
+packages="gnome firefox-esr chromium epiphany-browser gnome-shell-extension-dash-to-panel \
 gparted vlc  cups systemd-container imwheel \
 materia-gtk-theme papirus-icon-theme  neofetch \
 network-manager-openvpn-gnome virt-viewer freerdp2-x11 \
