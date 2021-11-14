@@ -11,7 +11,6 @@ xrandr \
 --pos 3000x374 \
 --rate 60.00 \
 --output HDMI-2 \
---crtc 0 \
 --mode 1920x1080 \
 --pos 0x408 \
 --primary \
