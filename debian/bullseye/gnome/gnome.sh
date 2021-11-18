@@ -20,6 +20,16 @@ for url in ${httpdownloadurls}; do
   rm -f ${file}
 done
 
+# Fedora background
+url="https://github.com/fedoradesign/backgrounds/releases/download/v34.0.1/f34-backgrounds-34.0.1.tar.xz"
+file=$(echo ${url} | awk -F / '{print$NF}')
+wget ${url}
+tar xvf ${file}
+mkdir /usr/share/backgrounds/$(echo ${file} | awk -F - '{print$1}')
+cp -r $(echo ${file} | awk -F - '{print$1,"-",$2}' | sed "s/ //g")/default /usr/share/backgrounds/$(echo ${file} | awk -F - '{print$1}')
+rm -rf $(echo ${file} | awk -F - '{print$1,"-",$2}' | sed "s/ //g")*
+
+
 mkdir -p /home/${username}/.config/autostart
 cat > /home/${username}/.config/autostart/script.desktop << EOF
 [Desktop Entry]

@@ -1,7 +1,7 @@
 gsettings set org.gnome.desktop.wm.preferences button-layout "appmenu:minimize,maximize,close"
 gsettings set org.gnome.desktop.interface enable-animations false
-#gsettings set org.gnome.desktop.background picture-uri 'file:///usr/share/desktop-base/joy-inksplat-theme/wallpaper/gnome-background.xml'
-gsettings set org.gnome.desktop.background picture-uri 'file:///usr/share/backgrounds/gnome/adwaita-timed.xml'
+#gsettings set org.gnome.desktop.background picture-uri 'file:///usr/share/backgrounds/gnome/adwaita-timed.xml'
+gsettings set org.gnome.desktop.background picture-uri '/usr/share/backgrounds/f34/default/gnome-backgrounds-f34.xml'
 # GEDIT
 gsettings set org.gnome.gedit.preferences.editor scheme 'oblivion'
 gsettings set org.gnome.gedit.preferences.editor display-line-numbers true
