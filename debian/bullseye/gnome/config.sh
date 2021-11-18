@@ -19,7 +19,7 @@ gsettings set org.gnome.Epiphany default-search-engine 'Google'
 gsettings set org.gnome.Epiphany restore-session-policy 'crashed'
 #Extensions
 #Dash-to-panel
-gsettings set org.gnome.shell favorite-apps "['epiphany.desktop', 'nautilus.desktop', 'gnome-terminal.desktop']"
+gsettings set org.gnome.shell favorite-apps "['chromium.desktop', 'nautilus.desktop', 'gnome-terminal.desktop']"
 gsettings set org.gnome.shell enabled-extensions "['dash-to-panel@jderose9.github.com']"
 gsettings --schemadir /usr/share/gnome-shell/extensions/dash-to-panel@jderose9.github.com/schemas/ list-recursively org.gnome.shell.extensions.dash-to-panel
 gsettings --schemadir /usr/share/gnome-shell/extensions/dash-to-panel@jderose9.github.com/schemas/ set org.gnome.shell.extensions.dash-to-panel panel-size 40
