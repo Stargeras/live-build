@@ -1,9 +1,8 @@
 #!/bin/bash
-packages="gnome firefox chromium neofetch htop gparted gnome-tweaks code ttf-droid \
+packages="gnome firefox chromium epiphany neofetch htop gparted gnome-tweaks code ttf-droid \
         virt-viewer cups networkmanager networkmanager-openvpn transmission-gtk rhythmbox \
-        celluloid gedit htop freerdp"
-#packages="gnome-session gnome-tweaks gnome-terminal gnome-backgrounds gnome-calculator gnome-control-center nautilus bluez gdm pulseaudio firefox chromium neofetch htop gparted virt-viewer cups networkmanager-openvpn networkmanager transmission-gtk rhythmbox celluloid gedit htop eog freerdp"
-aurpackages="f5vpn cackey gnome-shell-extension-dash-to-panel gnome-shell-extension-dash-to-dock"
+        celluloid gedit htop freerdp imwheel"
+aurpackages="yay f5vpn cackey gnome-shell-extension-dash-to-panel gnome-shell-extension-dash-to-dock"
 builddir="/srv/build-files"
 username=$(cat ${builddir}/username)
 pacman -S ${packages} --noconfirm #code npm nodejs deepin-community-wallpapers
@@ -20,6 +19,8 @@ for package in ${aurpackages}; do
   su ${username} -c "cd ${aurdir}/${package}/ && makepkg -si --noconfirm"
   su ${username} -c "sudo rm -rf ${aurdir}"
 done
+# Cleanup unneeded dependencies
+pacman -Rs $(pacman -Qtdq) --noconfirm
 
 # #yaru
 #pacman -S ninja meson sassc --noconfirm

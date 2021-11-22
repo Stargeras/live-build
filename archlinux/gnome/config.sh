@@ -2,21 +2,24 @@ gsettings set org.gnome.desktop.wm.preferences button-layout "appmenu:minimize,m
 #gsettings set org.gnome.desktop.wm.preferences button-layout "close,minimize,maximize:appmenu"
 gsettings set org.gnome.desktop.interface enable-animations false
 #gsettings set org.gnome.desktop.background picture-uri 'file:///usr/share/backgrounds/gnome/SeaSunset.jpg'
-#DARK THEME
 #gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
+# GEDIT
 gsettings set org.gnome.gedit.preferences.editor scheme 'oblivion'
-gsettings set org.gnome.Terminal.Legacy.Settings theme-variant dark
+gsettings set org.gnome.gedit.preferences.editor display-line-numbers true
 #THEME
 #gsettings set org.gnome.desktop.interface gtk-theme 'amarena'
 #gsettings set org.gnome.desktop.interface icon-theme 'amarena'
 #gsettings set org.gnome.desktop.interface cursor-theme 'amarena'
-#Nautilus size
-gsettings set org.gnome.nautilus.window-state initial-size '(1050, 560)'
-#Terminal size
-gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/ default-size-rows 27
-gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/ default-size-columns 122
+#Nautilus
+gsettings set org.gnome.nautilus.window-state initial-size '(1119, 604)'
+gsettings set org.gnome.nautilus.icon-view default-zoom-level 'small'
+#Terminal
+gsettings set org.gnome.Terminal.Legacy.Settings theme-variant dark
+dconf write /org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/bold-is-bright 'true'
+gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/ default-size-rows 33
+gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/ default-size-columns 123
 #Dash to panel
-gsettings set org.gnome.shell favorite-apps "['firefox.desktop', 'nautilus.desktop', 'gnome-terminal.desktop']"
+gsettings set org.gnome.shell favorite-apps "['chromium.desktop', 'nautilus.desktop', 'gnome-terminal.desktop']"
 #gsettings set org.gnome.shell enabled-extensions "['dash-to-panel@jderose9.github.com']"
 #gsettings --schemadir /usr/share/gnome-shell/extensions/dash-to-panel@jderose9.github.com/schemas/ list-recursively org.gnome.shell.extensions.dash-to-panel
 #gsettings --schemadir /usr/share/gnome-shell/extensions/dash-to-panel@jderose9.github.com/schemas/ set org.gnome.shell.extensions.dash-to-panel panel-size 40
@@ -40,3 +43,14 @@ gsettings set org.gnome.desktop.interface clock-format 12h
 gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-type 'nothing'
 #touchpad
 gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
+# imwheel config
+cat > ${HOME}/.imwheelrc << EOF
+".*"
+None,      Up,   Button4, 3
+None,      Down, Button5, 3
+Control_L, Up,   Control_L|Button4
+Control_L, Down, Control_L|Button5
+Shift_L,   Up,   Shift_L|Button4
+Shift_L,   Down, Shift_L|Button5
+EOF
+imwheel -kill
