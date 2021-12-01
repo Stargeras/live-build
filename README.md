@@ -1,4 +1,4 @@
-### This project builds a live image (.iso) of either archlinux of debian with your choice of a supported desktop environment. There are many customizations I have made to the desktop environments to fine tune them to my liking, and I hope I can empower you to do the same.
+### This project builds a live image (.iso) of either archlinux of debian with your choice of a supported desktop environment. There are many customizations I have made to the desktop environments to fine tune them and enable others to do the same.
 
 ### Acronyms used:
   - OS - operating system
