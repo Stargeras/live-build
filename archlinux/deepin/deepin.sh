@@ -7,6 +7,7 @@ builddir="/srv/build-files"
 username=$(cat ${builddir}/username)
 pacman -S ${packages} --noconfirm
 systemctl enable NetworkManager
+systemctl enable lightdm
 systemctl enable sshd
 systemctl enable cups-browsed
 
