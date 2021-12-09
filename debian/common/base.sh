@@ -23,11 +23,11 @@ alias ls='ls --color=auto'
 alias ll='ls -l'
 alias ram='ps axch -o cmd:15,%mem --sort=-%mem | head'
 alias cpu='ps axch -o cmd:15,%cpu --sort=-%cpu | head'
-alias weather='curl wttr.in/21009+us'
 #needs youtube-dl
 alias ytdm='youtube-dl --extract-audio --audio-format mp3'
 alias ytdv='youtube-dl -f bestvideo+bestaudio'
 EOF
+cp /etc/skel/.bashrc /root/
 echo debian-$(cat /etc/apt/sources.list | head -1 | awk '{print$3}') > /etc/hostname
 
 # SET DEFAULT RESOLUTION
@@ -66,7 +66,6 @@ set mouse=v
 EOF
 chown ${username}:users /home/${username}/.vimrc
 cp /home/${username}/.vimrc /root/
-cp /home/${username}/.bashrc /root/
 
 # ADD AUTHORIZED_KEYS
 mkdir /root/.ssh
