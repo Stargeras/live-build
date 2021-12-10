@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# THIS DOESN'T RUN AT INSTALL TIME. MUST RUN WHILE IN OS ENVIRONMENT
+
 urls="https://amazon-eks.s3.us-west-2.amazonaws.com/1.21.2/2021-07-05/bin/linux/amd64/aws-iam-authenticator \
 https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl \
 https://releases.hashicorp.com/terraform/1.1.0/terraform_1.1.0_linux_amd64.zip"
