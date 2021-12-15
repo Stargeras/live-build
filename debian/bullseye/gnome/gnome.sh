@@ -1,10 +1,11 @@
 #!/bin/bash
 
 packages="gnome firefox-esr chromium epiphany-browser neofetch imwheel \
-gparted celluloid gnome-shell-extension-dash-to-panel cups cackey awscli \
+gparted celluloid gnome-shell-extension-dash-to-panel cups awscli \
 systemd-container network-manager-openvpn-gnome virt-viewer freerdp2-x11 \
 gnome-games-"
-httpdownloadurls="https://f5vpn.geneseo.edu/public/download/linux_f5vpn.x86_64.deb"
+httpdownloadurls="https://f5vpn.geneseo.edu/public/download/linux_f5vpn.x86_64.deb \
+http://cackey.rkeene.org/download/0.7.5/cackey_0.7.5-1_amd64.deb"
 builddir="/srv/build-files"
 username=$(cat ${builddir}/username)
 
