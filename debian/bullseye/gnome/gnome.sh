@@ -1,7 +1,7 @@
 #!/bin/bash
 
 packages="gnome firefox-esr chromium epiphany-browser neofetch imwheel \
-gparted celluloid gnome-shell-extension-dash-to-panel cups awscli \
+gparted celluloid gnome-shell-extension-dash-to-panel cups awscli dnsutils \
 systemd-container network-manager-openvpn-gnome virt-viewer freerdp2-x11 \
 gnome-games-"
 httpdownloadurls="https://f5vpn.geneseo.edu/public/download/linux_f5vpn.x86_64.deb \
