@@ -1,11 +1,13 @@
 #!/bin/bash
 
-packages="gnome firefox-esr neofetch ssh vim curl bash-completion virt-viewer \
-gparted celluloid gnome-shell-extension-dash-to-panel flatpak cups git \
-debootstrap systemd-container arch-install-scripts network-manager-openvpn-gnome \
+packages="gnome firefox-esr chromium epiphany-browser neofetch imwheel \
+gparted celluloid gnome-shell-extension-dash-to-panel cups awscli \
+systemd-container network-manager-openvpn-gnome virt-viewer freerdp2-x11 \
 gnome-games-"
-httpdownloadurls="https://f5vpn.geneseo.edu/public/download/linux_f5vpn.x86_64.deb"
-username=$(cat /root/username)
+httpdownloadurls="https://f5vpn.geneseo.edu/public/download/linux_f5vpn.x86_64.deb \
+http://cackey.rkeene.org/download/0.7.5/cackey_0.7.5-1_amd64.deb"
+builddir="/srv/build-files"
+username=$(cat ${builddir}/username)
 
 apt update
 apt install -y ${packages}
@@ -19,17 +21,27 @@ for url in ${httpdownloadurls}; do
   rm -f ${file}
 done
 
-su ${username} -c "mkdir -p \$HOME/.config/autostart"
-su ${username} -c "cat > \$HOME/.config/autostart/script.desktop << EOF
+# Fedora background
+url="https://github.com/fedoradesign/backgrounds/releases/download/v34.0.1/f34-backgrounds-34.0.1.tar.xz"
+file=$(echo ${url} | awk -F / '{print$NF}')
+wget ${url}
+tar xvf ${file}
+mkdir /usr/share/backgrounds/$(echo ${file} | awk -F - '{print$1}')
+cp -r $(echo ${file} | awk -F - '{print$1,"-",$2}' | sed "s/ //g")/default /usr/share/backgrounds/$(echo ${file} | awk -F - '{print$1}')
+rm -rf $(echo ${file} | awk -F - '{print$1,"-",$2}' | sed "s/ //g")*
+
+
+mkdir -p /home/${username}/.config/autostart
+cat > /home/${username}/.config/autostart/script.desktop << EOF
 [Desktop Entry]
 Name=script
 GenericName=config script
-Exec=\$HOME/Documents/config.sh
+Exec=${builddir}/config.sh
 Terminal=false
 Type=Application
 X-GNOME-Autostart-enabled=true
-EOF"
-su ${username} -c "chmod +x \$HOME/.config/autostart/script.desktop"
+EOF
+chmod +x /home/${username}/.config/autostart/script.desktop
 
 ##Firefox title bar and flex space
 cat >> /etc/firefox-esr/firefox-esr.js << EOF
@@ -51,21 +63,21 @@ su ${username} -c "cd \${HOME}/yaru && meson build"
 su ${username} -c "sudo ninja -C \${HOME}/yaru/build/ install"
 rm -rf /home/${username}/yaru
 
+# Zorin Theme
+git clone https://github.com/ZorinOS/zorin-desktop-themes.git
+git clone https://github.com/ZorinOS/zorin-icon-themes.git
+cp -r zorin-desktop-themes/Zorin* /usr/share/themes/
+cp -r zorin-icon-themes/Zorin* /usr/share/icons
+rm -rf zorin-desktop-themes
+rm -rf zorin-icon-themes
+
 #Material-shell
 git clone https://github.com/material-shell/material-shell.git /usr/share/gnome-shell/extensions/material-shell@papyelgringo
 
 #disable wayland gdm
 #echo 'WaylandEnable=false' >> /etc/gdm3/custom.conf
 
-cat >> /home/${username}/Documents/adwaita.sh << EOF
-gsettings set org.gnome.desktop.background picture-uri 'file:///usr/share/backgrounds/gnome/adwaita-timed.xml'
-gsettings set org.gnome.shell enabled-extensions "['']"
-gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita'
-gsettings set org.gnome.desktop.interface icon-theme 'Adwaita'
-gsettings set org.gnome.desktop.interface cursor-theme 'Adwaita'
-EOF
-
-#copy config files
-cp /root/* /home/${username}/Documents/
-chmod +x /home/${username}/Documents/*.sh
+# Permissions
+chmod +x ${builddir}/*.sh
+chown -R ${username}:users ${builddir}
 chown -R ${username}:users /home/${username}/
