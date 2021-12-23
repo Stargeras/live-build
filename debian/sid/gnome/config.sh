@@ -7,7 +7,7 @@ gsettings set org.gnome.desktop.background picture-uri 'file:///usr/share/backgr
 gsettings set org.gnome.gedit.preferences.editor scheme 'oblivion'
 gsettings set org.gnome.gedit.preferences.editor display-line-numbers true
 #Nautilus
-gsettings set org.gnome.nautilus.window-state initial-size '(1119, 604)'
+gsettings set org.gnome.nautilus.window-state initial-size '(1160, 658)'
 gsettings set org.gnome.nautilus.icon-view default-zoom-level 'small'
 #Terminal
 gsettings set org.gnome.Terminal.Legacy.Settings theme-variant dark
