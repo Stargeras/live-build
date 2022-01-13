@@ -75,7 +75,7 @@ cat >> /etc/lightdm/lightdm.conf << EOF
 greeter-session=lightdm-gtk-greeter
 EOF
 cat >> /etc/lightdm/lightdm-gtk-greeter.conf << EOF
-background=/usr/share/backgrounds/odin.jpg
+background=/usr/share/backgrounds/elementaryos-default
 EOF
 
 # Disable first run setup dialog
