@@ -38,7 +38,7 @@ imwheel -kill
 
 ### PLANK DOCK
 # App names are in /usr/share/applications without .desktop extension
-dockitems="org.gnome.Epiphany chromium io.elementary.files io.elementary.terminal io.elementary.code io.elementary.switchboard"
+dockitems="chromium io.elementary.files io.elementary.terminal io.elementary.code io.elementary.switchboard"
 dockpath="${HOME}/.config/plank/dock1/launchers"
 dconfstring=""
 # INITIALIZE PLANK. IF THIS IS NOT DONE FIRST, DOCK ITEMS GET RESET
