@@ -14,8 +14,9 @@ workspacedir="${basedir}/workspace"
 filesdir="${basedir}/${release}/${flavor}"
 scriptname="${flavor}.sh"
 
-# INSTALL PACKAGES
-sudo apt install -y debootstrap arch-install-scripts live-build
+# INSTALL DEPENDENCIES
+dependencies="debootstrap arch-install-scripts live-build"
+sudo apt install -y ${dependencies}
 
 # PREPARE BUILD-FILES
 #sudo chown -R jenkins:users ${filesdir}
