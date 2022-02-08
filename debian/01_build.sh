@@ -62,7 +62,7 @@ if ${serveoverhttp}; then
   #if ! apt list --installed ${package} > /dev/null 2>&1; then
    # sudo apt install -y ${package}
   #fi
-  sudo apt install apache2 -y
+  sudo apt install ${package} -y
   sudo mkdir -p /var/www/html/releases
   sudo systemctl start apache2
   sudo mv ${workspacedir}/*.iso /var/www/html/releases/
