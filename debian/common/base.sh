@@ -5,7 +5,7 @@ username=$(cat ${builddir}/username)
 defaultresolution=$(cat ${builddir}/defaultresolution)
 timezone=$(cat ${builddir}/localtime)
 packages="xserver-xorg-core xdg-user-dirs sudo ssh vim curl bash-completion git debootstrap arch-install-scripts \
-firmware-realtek firmware-misc-nonfree firmware-libertas firmware-iwlwifi firmware-intelwimax firmware-linux"
+firmware-realtek firmware-misc-nonfree firmware-libertas firmware-iwlwifi firmware-intelwimax firmware-linux open-vm-tools"
 
 apt update
 apt install -y ${packages}

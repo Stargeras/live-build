@@ -5,7 +5,7 @@ username=$(cat ${builddir}/username)
 defaultresolution=$(cat ${builddir}/defaultresolution)
 timezone=$(cat ${builddir}/localtime)
 packages="base-devel git bash-completion \
-xorg-server xorg-apps xorg-xinit xdg-user-dirs \
+xorg-server xorg-apps xorg-xinit xdg-user-dirs open-vm-tools \
 xf86-video-vesa xf86-video-vmware xf86-video-intel xf86-video-amdgpu xf86-video-nouveau"
 
 # PACMAN INIT
