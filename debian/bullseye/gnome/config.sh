@@ -45,7 +45,7 @@ dconf write /org/gnome/shell/extensions/materialshell/layouts/grid "true"
 dconf write /org/gnome/shell/extensions/materialshell/layouts/tween-time "0.0"
 dconf write /org/gnome/shell/extensions/materialshell/layouts/gap "10"
 dconf write /org/gnome/shell/extensions/materialshell/theme/blur-background "true"
-dconf write /org/gnome/shell/extensions/materialshell/theme/horizontal-panel-position "'bottom'"
+dconf write /org/gnome/shell/extensions/materialshell/theme/horizontal-panel-position "'top'"
 dconf write /org/gnome/shell/extensions/materialshell/bindings/cycle-tiling-layout "['<Super>f']"
 
 # Keybindings
