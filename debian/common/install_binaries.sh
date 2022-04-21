@@ -22,3 +22,6 @@ for url in ${urls}; do
     mv ${file} /usr/local/bin/
   fi
 done
+
+# INSTALL HELM
+curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
