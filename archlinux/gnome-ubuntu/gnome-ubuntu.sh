@@ -1,11 +1,13 @@
 #!/bin/bash
 packages="gnome firefox chromium epiphany neofetch htop gparted gnome-tweaks code ttf-droid \
-        virt-viewer cups networkmanager networkmanager-openvpn transmission-gtk rhythmbox \
+        virt-viewer cups networkmanager networkmanager-openvpn transmission-gtk rhythmbox wget curl \
         celluloid gedit htop freerdp imwheel ttf-ubuntu-font-family terraform kubectl helm"
 aurpackages="yay f5vpn cackey gnome-shell-extension-dash-to-panel gnome-shell-extension-dash-to-dock \
              humanity-icon-theme yaru ubuntu-wallpapers"
 builddir="/srv/build-files"
 username=$(cat ${builddir}/username)
+wallpaperurl="https://149366088.v2.pressablecdn.com/wp-content/uploads/2022/03/jammy-jellyfish-wallpaper.jpg"
+
 pacman -S ${packages} --noconfirm
 systemctl enable NetworkManager
 systemctl enable gdm
@@ -49,6 +51,9 @@ cat > /var/lib/AccountsService/users/${username} << EOF
 Language=
 XSession=gnome-xorg
 EOF
+
+# Download ubuntu wallpaper
+wget ${wallpaperurl} -O /usr/share/backgrounds/ubuntu.jpg
 
 # Permissions
 chmod +x ${builddir}/*.sh
