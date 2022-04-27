@@ -3,10 +3,10 @@ packages="gnome firefox chromium epiphany neofetch htop gparted gnome-tweaks cod
         virt-viewer cups networkmanager networkmanager-openvpn transmission-gtk rhythmbox \
         celluloid gedit htop freerdp imwheel ttf-ubuntu-font-family terraform kubectl helm"
 aurpackages="yay f5vpn cackey gnome-shell-extension-dash-to-panel gnome-shell-extension-dash-to-dock \
-              yaru-gtk-theme yaru-icon-theme yaru-sound-theme ubuntu-wallpapers"
+             humanity-icon-theme yaru ubuntu-wallpapers"
 builddir="/srv/build-files"
 username=$(cat ${builddir}/username)
-pacman -S ${packages} --noconfirm #code npm nodejs deepin-community-wallpapers
+pacman -S ${packages} --noconfirm
 systemctl enable NetworkManager
 systemctl enable gdm
 systemctl enable sshd
@@ -20,19 +20,9 @@ for package in ${aurpackages}; do
   su ${username} -c "cd ${aurdir}/${package}/ && makepkg -si --noconfirm"
   su ${username} -c "sudo rm -rf ${aurdir}"
 done
+
 # Cleanup unneeded dependencies
 pacman -Rs $(pacman -Qtdq) --noconfirm
-
-# #yaru
-#pacman -S ninja meson sassc --noconfirm
-#su ${username} -c 'mkdir ~/Documents/build'
-#su ${username} -c 'cd ~/Documents/build && git clone https://github.com/ubuntu/yaru.git'
-#su ${username} -c 'cd ~/Documents/build/yaru/ && sudo ./bootstrap.sh -b'
-
-#su ${username} -c 'cd ~/Documents/build/ && git clone https://github.com/jaxwilko/gtk-theme-framework.git'
-#su ${username} -c 'cd ~/Documents/build/gtk-theme-framework/ && sudo ./main.sh -io -t amarena -d /usr/share/themes/ -p /usr/share/icons/'
-#su ${username} -c 'cd ~/Documents/build/gtk-theme-framework/ && sudo ./main.sh -io -t palenight -d /usr/share/themes/ -p /usr/share/icons/'
-#su ${username} -c 'cd ~/Documents/build/gtk-theme-framework/ && sudo ./main.sh -io -t gruvterial -d /usr/share/themes/ -p /usr/share/icons/'
 
 mkdir -p /home/${username}/.config/autostart
 cat > /home/${username}/.config/autostart/script.desktop << EOF
