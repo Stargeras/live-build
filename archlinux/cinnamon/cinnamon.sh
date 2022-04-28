@@ -2,7 +2,7 @@
 packages="cinnamon nemo-fileroller lightdm lightdm-gtk-greeter firefox chromium neofetch htop gparted celluloid gnome-terminal gedit \
           virt-viewer freerdp imwheel cups vim curl gnome-screenshot eog code archlinux-wallpaper jq terraform kubectl helm \
           noto-fonts inter-font ttf-opensans ttf-roboto ttf-roboto-mono ttf-droid"
-aurpackages="f5vpn cackey yay orchis-theme-git tela-circle-icon-theme-git breeze-hacked-cursor-theme-git"
+aurpackages="f5vpn cackey yay orchis-theme-git tela-circle-icon-theme-git breeze-hacked-cursor-theme-git aws-iam-authenticator"
 builddir="/srv/build-files"
 username=$(cat ${builddir}/username)
 usechromiummods="false"
