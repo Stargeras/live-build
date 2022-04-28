@@ -62,7 +62,9 @@ alias ls='ls --color=auto'
 alias ll='ls -l'
 alias ram='ps axch -o cmd:15,%mem --sort=-%mem | head'
 alias cpu='ps axch -o cmd:15,%cpu --sort=-%cpu | head'
-export PS1="\[\e[31m\]\u\[\e[m\]@\h\[\e[34m\]\w\[\e[m\]\\$ "
+#export PS1="\[\e[31m\]\u\[\e[m\]@\h\[\e[34m\]\w\[\e[m\]\\$ "
+# Debian colors
+PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 EOF
 
 cat >> /home/${username}/.bashrc << EOF
@@ -70,7 +72,9 @@ alias ls='ls --color=auto'
 alias ll='ls -l'
 alias ram='ps axch -o cmd:15,%mem --sort=-%mem | head'
 alias cpu='ps axch -o cmd:15,%cpu --sort=-%cpu | head'
-export PS1="\[\e[31m\]\u\[\e[m\]@\h\[\e[34m\]\w\[\e[m\]\\$ "
+#export PS1="\[\e[31m\]\u\[\e[m\]@\h\[\e[34m\]\w\[\e[m\]\\$ "
+# Debian colors
+PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 EOF
 chown ${username}:users /home/${username}/.bashrc
 
@@ -80,6 +84,7 @@ syntax on
 colorscheme slate
 set mouse=v
 EOF
+cp /home/${username}/.vimrc /root/.vimrc
 chown ${username}:users /home/${username}/.vimrc
 
 # SET DEFAULT RESOLUTION
