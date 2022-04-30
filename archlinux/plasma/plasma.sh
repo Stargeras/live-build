@@ -1,11 +1,11 @@
 #!/bin/bash
 packages="plasma firefox chromium neofetch htop gparted print-manager \
         konsole dolphin gwenview ark kate qbittorrent celluloid imwheel \
-        virt-viewer cups freerdp code ttf-droid"
+        virt-viewer cups freerdp code ttf-droid terraform kubectl helm"
 aurpackages="f5vpn cackey yay"
 builddir="/srv/build-files"
 username=$(cat ${builddir}/username)
-usechromiummods="true"
+usechromiummods="false"
 
 pacman -S ${packages} --noconfirm #code npm nodejs
 systemctl enable NetworkManager

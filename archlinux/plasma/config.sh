@@ -3,19 +3,7 @@
 
 #default browser
 #sed -i "s#BrowserApplication#BrowserApplication=firefox.desktop#g" ~/.config/kdeglobals
-kwriteconfig5 --file kdeglobals --group General --key BrowserApplication firefox.desktop
-
-# imwheel config
-cat > ${HOME}/.imwheelrc << EOF
-".*"
-None,      Up,   Button4, 3
-None,      Down, Button5, 3
-Control_L, Up,   Control_L|Button4
-Control_L, Down, Control_L|Button5
-Shift_L,   Up,   Shift_L|Button4
-Shift_L,   Down, Shift_L|Button5
-EOF
-imwheel -kill
+kwriteconfig5 --file kdeglobals --group General --key BrowserApplication chromium.desktop
 
 # Favorites mods
 favorites="chromium.desktop org.kde.dolphin.desktop org.kde.konsole.desktop org.kde.kate.desktop systemsettings.desktop"
@@ -28,6 +16,17 @@ done
 kquitapp5 plasmashell
 kstart5 plasmashell
 
+# imwheel config
+cat > ${HOME}/.imwheelrc << EOF
+".*"
+None,      Up,   Button4, 3
+None,      Down, Button5, 3
+Control_L, Up,   Control_L|Button4
+Control_L, Down, Control_L|Button5
+Shift_L,   Up,   Shift_L|Button4
+Shift_L,   Down, Shift_L|Button5
+EOF
+imwheel -kill
 
 #OLD
 #kwriteconfig5 --file plasmarc --group Theme --key name breeze-dark
