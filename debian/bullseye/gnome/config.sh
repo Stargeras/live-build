@@ -25,17 +25,17 @@ gsettings set org.gnome.Epiphany restore-session-policy 'crashed'
 # Extensions
 # Dash-to-panel
 #gsettings set org.gnome.shell favorite-apps "['chromium.desktop', 'nautilus.desktop', 'gnome-terminal.desktop']"
-#gsettings set org.gnome.shell enabled-extensions "['dash-to-panel@jderose9.github.com']"
-#gsettings --schemadir /usr/share/gnome-shell/extensions/dash-to-panel@jderose9.github.com/schemas/ list-recursively org.gnome.shell.extensions.dash-to-panel
-#gsettings --schemadir /usr/share/gnome-shell/extensions/dash-to-panel@jderose9.github.com/schemas/ set org.gnome.shell.extensions.dash-to-panel panel-size 40
-#gsettings --schemadir /usr/share/gnome-shell/extensions/dash-to-panel@jderose9.github.com/schemas/ set org.gnome.shell.extensions.dash-to-panel animate-show-apps false
-#gsettings --schemadir /usr/share/gnome-shell/extensions/dash-to-panel@jderose9.github.com/schemas/ set org.gnome.shell.extensions.dash-to-panel appicon-margin 3
-#gsettings --schemadir /usr/share/gnome-shell/extensions/dash-to-panel@jderose9.github.com/schemas/ set org.gnome.shell.extensions.dash-to-panel appicon-padding 3
-#dconf write /org/gnome/shell/extensions/dash-to-panel/show-window-previews false
+gsettings set org.gnome.shell enabled-extensions "['dash-to-panel@jderose9.github.com']"
+gsettings --schemadir /usr/share/gnome-shell/extensions/dash-to-panel@jderose9.github.com/schemas/ list-recursively org.gnome.shell.extensions.dash-to-panel
+gsettings --schemadir /usr/share/gnome-shell/extensions/dash-to-panel@jderose9.github.com/schemas/ set org.gnome.shell.extensions.dash-to-panel panel-size 40
+gsettings --schemadir /usr/share/gnome-shell/extensions/dash-to-panel@jderose9.github.com/schemas/ set org.gnome.shell.extensions.dash-to-panel animate-show-apps false
+gsettings --schemadir /usr/share/gnome-shell/extensions/dash-to-panel@jderose9.github.com/schemas/ set org.gnome.shell.extensions.dash-to-panel appicon-margin 3
+gsettings --schemadir /usr/share/gnome-shell/extensions/dash-to-panel@jderose9.github.com/schemas/ set org.gnome.shell.extensions.dash-to-panel appicon-padding 3
+dconf write /org/gnome/shell/extensions/dash-to-panel/show-window-previews false
 
 # Material-shell
 gsettings set org.gnome.shell favorite-apps "['chromium.desktop', 'nautilus.desktop', 'gnome-terminal.desktop']"
-gsettings set org.gnome.shell enabled-extensions "['material-shell@papyelgringo']"
+#gsettings set org.gnome.shell enabled-extensions "['material-shell@papyelgringo']"
 gsettings set org.gnome.desktop.notifications show-banners false
 dconf write /org/gnome/shell/extensions/materialshell/theme/panel-icon-style "'category'"
 dconf write /org/gnome/shell/extensions/materialshell/theme/panel-size "40"
