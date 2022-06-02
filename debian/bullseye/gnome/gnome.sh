@@ -52,11 +52,11 @@ pref("browser.uiCustomization.state", "{\"placements\":{\"widget-overflow-fixed-
 EOF
 
 ##Set XORG as default session
-cat > /var/lib/AccountsService/users/${username} << EOF
-[User]
-Language=
-XSession=gnome-xorg
-EOF
+#cat > /var/lib/AccountsService/users/${username} << EOF
+#[User]
+#Language=
+#XSession=gnome-xorg
+#EOF
 
 #Yaru
 apt install -y git meson sassc libglib2.0-dev
