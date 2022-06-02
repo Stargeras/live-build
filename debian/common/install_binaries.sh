@@ -50,3 +50,7 @@ curl -s https://fluxcd.io/install.sh | bash
 
 # ADD USER TO DOCKER GROUP
 usermod -aG docker ${username}
+
+# KUBECTL BASH COMPLETION
+echo "source <(kubectl completion bash)" >> /home/${username}/.bashrc
+echo "source <(kubectl completion bash)" >> /root/.bashrc
