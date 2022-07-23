@@ -1,37 +1,49 @@
-## Welcome to GitHub Pages
+### This project builds a live image (.iso) of either archlinux of debian with your choice of a supported desktop environment. There are many customizations I have made to the desktop environments to fine tune them and enable others to do the same.
 
-You can use the [editor on GitHub](https://github.com/Stargeras/live-build/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+### Acronyms used:
+  - OS - operating system
+  - DE - desktop environment
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+## How do I use it?
+- You must be using a system running the same operating system as the one being built. For example to be an archlinux image, you must be on an archlinux system.
+- All you need to do is run the 01_build.sh script in the respective OS directory and specify the desktop environment to install
+- If building Debian, also specify the codename of the Debian version to build (Examples below)
+- The supported desktop environments are also listed below
+- See the 01_build.sh scripts for variables to tweak
+- The "common" directory within each OS directory contain files and scripts that will be placed onto the target image regardless of the DE being installed
 
-### Markdown
+### Modifying the install
+- Within each desktop environment directory, there is a bash script with the same name as the DE. This runs in chroot at build time and can be modified to run additional commands or add/remove packages
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+### Modifying DE settings
+- Things like enabling extensions, modifying the theme, modifying programs on the panel, etc cannot be done in a chroot environment.
+- To achieve this, most DE folders also include a "config.sh" script which runs each time the new system logs in and can be modified to add additional tweaks or lock down certain settings
+- In the future, I plan on adding more comments for further clarity on what the commands are doing though most are fairly self explanitory
 
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+### Arch Linux
+```
+bash archlinux/01_build.sh pantheon
 ```
 
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
+### Debian
+```
+bash debian/01_build.sh buster gnome
+```
 
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Stargeras/live-build/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+### Supported Desktop Environments
+- Archlinux
+  - budgie
+  - cinammon
+  - gnome
+  - pantheon
+  - plasma
+  - ukui
+  - xfce
+- Debian
+  - Buster
+    - gnome
+  - Bullseye
+    - gnome
+  - Sid
+    - gnome
+    - plasma
